@@ -57,6 +57,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_11_075516) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
+  
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_comments_on_product_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "product_categories", force: :cascade do |t|
     t.string "name"
@@ -97,5 +107,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_11_075516) do
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
   add_foreign_key "orders", "users"
+  add_foreign_key "comments", "products"
+  add_foreign_key "comments", "users"
   add_foreign_key "products", "product_categories"
 end
