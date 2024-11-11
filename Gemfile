@@ -63,3 +63,5 @@ gem "simple_form"
 gem "activeadmin"
 gem "devise"
 
+gem "sassc"
+
