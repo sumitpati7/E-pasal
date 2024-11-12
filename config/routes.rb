@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   devise_for :vendors, controllers: {
-    sessions: 'vendors/sessions',
-    registrations: 'vendors/registrations',
-    unlocks: 'vendors/unlocks',
-    passwords: 'vendors/passwords',
-    omniauth: 'vendors/omniauth',
-    confirmations: 'vendors/confirmations'
+    sessions: "vendors/sessions",
+    registrations: "vendors/registrations",
+    unlocks: "vendors/unlocks",
+    passwords: "vendors/passwords",
+    omniauth: "vendors/omniauth",
+    confirmations: "vendors/confirmations"
   }
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   root "vendors#index"
   resources :vendors, only: %i[new create index edit show]
   resources :products
+
+  resources :product_categories, only: [ :new, :create ]
 end
