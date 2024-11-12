@@ -1,0 +1,14 @@
+
+<%=image_tag current_vendor.vendor_image, size:"100*100"%>
+Owner name=<%=current_vendor.owner_name%>
+
+Shop name=<%=current_vendor.shop_name%>
+Address=<%=current_vendor.address%>
+Contact Number=<%=current_vendor.contact_number%>
+id=<%=current_vendor.id%>
+
+<div class="flex gap-1 mx-3">
+<%=button_to "Add Product",new_product_path,method: :get,class:"w-full px-4 py-2 mt-6 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
+<%=button_to "All Product",new_product_path,method: :get,class:"w-full px-4 py-2 mt-6 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
+<%=button_to "Add Category",new_product_path,method: :get,class:"w-full px-4 py-2 mt-6 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
+</div>
