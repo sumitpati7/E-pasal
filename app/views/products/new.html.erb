@@ -1,0 +1,16 @@
+<div class="w-[80%] p-2 m-auto  bg-blue-300">
+    
+
+    <%= simple_form_for @product do |f| %>
+    <%= f.input :name ,wrapper_html:{ class:"block text-gray-500 font-bold mb-1 md:mb-0 pr-4",input_html:{class:"bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"}} %>
+    <%= f.input :brand %>
+    <%=f.input :product_image%>
+    <%= f.input :description %>
+    <%= f.input :price %>
+    <%= f.input :product_category_id %>
+    <%= f.input :discount_percentage %>
+    <%= f.button :submit ,class:"shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"%>
+    <% end %>
+    
+
+</div>
