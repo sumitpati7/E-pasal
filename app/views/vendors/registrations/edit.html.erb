@@ -1,0 +1,68 @@
+<div class="py-4">
+  <h2 class="text-3xl font-semibold text-center text-[#2e2e2e] mb-8">Edit <%= resource_name.to_s.humanize %></h2>
+  
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), method: :put, html: { class: "max-w-lg mx-auto p-8 bg-white rounded-lg shadow-md space-y-6" }) do |f| %>
+  
+    <%= f.error_notification %>
+  
+    <div class="space-y-4">
+      <%= f.input :email, 
+                  required: true, 
+                  autofocus: true, 
+                  label_html: { class: "block text-base font-medium text-[#2e2e2e] mb-1" },
+                  input_html: { autocomplete: "email", class: "w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f25c54]" } %>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <p class="text-sm text-[#f25c54]">Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+      <% end %>
+
+      <%= f.input :password, 
+                  hint: "Leave it blank if you don't want to change it", 
+                  required: false, 
+                  label_html: { class: "block text-base font-medium text-[#2e2e2e] mb-1" },
+                  input_html: { autocomplete: "new-password", class: "w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f25c54]" } %>
+
+      <%= f.input :password_confirmation, 
+                  required: false, 
+                  label_html: { class: "block text-base font-medium text-[#2e2e2e] mb-1" },
+                  input_html: { autocomplete: "new-password", class: "w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f25c54]" } %>
+
+      <%= f.input :current_password, 
+                  required: true, 
+                  hint: "We need your current password to confirm your changes", 
+                  label_html: { class: "block text-base font-medium text-[#2e2e2e] mb-1" },
+                  input_html: { autocomplete: "current-password", class: "w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f25c54]" } %>
+
+                  <%= f.input :owner_name, required: true,
+                  label_html: { class: "block text-base font-medium text-[#2e2e2e] mb-1" },
+                  input_html: { class: "w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f25c54]" } %>
+  
+      <%= f.input :shop_name, required: true,
+                  label_html: { class: "block text-base font-medium text-[#2e2e2e] mb-1" },
+                  input_html: { class: "w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f25c54]" } %>
+  
+      <%= f.input :address, required: true,
+                  label_html: { class: "block text-base font-medium text-[#2e2e2e] mb-1" },
+                  input_html: { class: "w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f25c54]" } %>
+  
+      <%= f.input :contact_number, required: true,
+                  label_html: { class: "block text-base font-medium text-[#2e2e2e] mb-1" },
+                  input_html: { class: "w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f25c54]" } %>
+    </div>
+  
+    <div class="form-actions mt-6">
+      <%= f.button :submit, "Update", class: "w-full px-4 py-2 bg-[#f25c54] hover:bg-[#d94b43] text-white rounded-md text-lg font-medium" %>
+    </div>
+  
+  <% end %>
+
+  <div class="mt-6 text-center text-sm text-[#2e2e2e]">
+    <div class="font-medium text-[#2e2e2e] mb-4">
+      Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "text-[#f25c54] hover:text-[#d94b43]" %>
+    </div>
+  </div>
+
+  <div class="mt-4 text-center text-sm text-[#2e2e2e]">
+    <%= link_to "Back", :back, class: "text-[#f25c54] hover:text-[#d94b43]" %>
+  </div>
+</div>

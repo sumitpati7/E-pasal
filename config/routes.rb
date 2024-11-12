@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :vendors
+  devise_for :vendors, controllers: {
+    sessions: 'vendors/sessions',
+    registrations: 'vendors/registrations',
+    unlocks: 'vendors/unlocks',
+    passwords: 'vendors/passwords',
+    omniauth: 'vendors/omniauth',
+    confirmations: 'vendors/confirmations'
+  }
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -14,7 +21,7 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  # root "posts#index"
-  resources :vendors, only: [ :new, :create ]
+  root "vendors#show"
+  resources :vendors, only: %i[new create index edit ]
   resources :products
 end

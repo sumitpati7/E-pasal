@@ -5,8 +5,9 @@
 
         <div class="flex items-center gap-4">
             <% if vendor_signed_in? %>
-                <span class="text-[#2e2e2e] font-medium"><%= current_vendor.email %></span>
-                
+                <span class="text-[#2e2e2e] font-medium"><%= current_vendor.shop_name %></span>
+                <%= link_to "Edit Profile", edit_vendor_registration_path, 
+                    class: "bg-[#f25c54] hover:bg-[#d94b43] text-white px-4 py-2 rounded-md text-sm font-medium" %>
                 <%= button_to "Sign Out", destroy_vendor_session_path, method: :delete, 
                     class: "bg-[#f25c54] hover:bg-[#d94b43] text-white px-4 py-2 rounded-md text-sm font-medium" %>
             <% else %>
