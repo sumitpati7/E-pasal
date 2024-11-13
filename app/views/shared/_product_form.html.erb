@@ -26,7 +26,7 @@
         input_html:{class: "w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f25c54]"} %>
     <div class="flex gap-4">
     <%= f.input :price,required: true,
-    wrapper_html: {class:"flex-1"},
+        wrapper_html: {class:"flex-1"},
         label_html: { class: "block text-base font-medium text-[#2e2e2e] mb-1" },
         input_html:{class: "w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f25c54]"} %>
     <%= f.input :product_category_id,required: true,
@@ -38,7 +38,9 @@
         label_html: { class: "block text-base font-medium text-[#2e2e2e] mb-1" },
         input_html:{class: "w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f25c54]"}%>
     </div>
-
+    <%= f.input :vendor_id,
+        wrapper_html: {class:"hidden"},
+        input_html:{value: current_vendor.id}%>
     <div class="flex gap-4">
     <%= f.input :stock,required: true,
     wrapper_html: {class:"flex-1"},
