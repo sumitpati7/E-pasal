@@ -38,6 +38,13 @@
         label_html: { class: "block text-base font-medium text-[#2e2e2e] mb-1" },
         input_html:{class: "w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#f25c54]"}%>
     </div>
+        <div class="">
+    <%=turbo_frame_tag "add-product" do %>
+        <%=link_to "Add Category",new_product_category_path	,method: :get,
+        class:"w-full px-4 py-2 mt-6 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
+    <%end%>
+        </div>
+
     <%= f.input :vendor_id,
         wrapper_html: {class:"hidden"},
         input_html:{value: current_vendor.id}%>

@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   def after_sign_in_path_for(resource)
-    vendor_path(current_vendor.id)
+    root_path
   end
 
   def after_sign_out_path_for(resource)

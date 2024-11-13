@@ -2,13 +2,11 @@ class ProductsController < ApplicationController
   before_action :authenticate_vendor!
   def new
     @product=Product.new
-    # @product=@vendor.products.build
-    # puts ("curr #{current_vendor}")
   end
 
   def create
     @product = Product.new(product_params)
-    # @product=Product.new(product_params)
+
     if @product.save
       redirect_to vendor_path(current_vendor.id), notice: "The Product was added sucessfully."
     else
