@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-
+  before_action :authenticate_vendor!
   def new
     @product=Product.new
   end
