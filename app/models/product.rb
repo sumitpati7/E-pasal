@@ -21,6 +21,9 @@ class Product < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :order_products, dependent: :destroy
   has_many :orders, through: :order_products
-  has_many :users, through: :comments
+  has_many :users, through: :comments 
+
+  validates :discount_percentage, numericality: { greater_than_or_equal_to: 0, less_than: 100 }
+  validates :stock, numericality: { greater_than_or_equal_to: 1 }
 
 end

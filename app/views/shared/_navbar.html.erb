@@ -5,9 +5,16 @@
 
         <div class="flex items-center gap-4">
             <% if vendor_signed_in? %>
-                <span class="text-[#2e2e2e] font-medium"><%=link_to current_vendor.shop_name,vendor_path(current_vendor.id)%></span>
-                <%= link_to "Edit Profile", edit_vendor_registration_path, 
-                    class: "bg-[#f25c54] hover:bg-[#d94b43] text-white px-4 py-2 rounded-md text-sm font-medium" %>
+                    <%= link_to vendor_path(current_vendor.id), class: "flex gap-4 items-center" do %>
+                        <div class="flex justify-center">
+                            <% if current_vendor.vendor_image.attached? %>
+                                <%=image_tag current_vendor.vendor_image, class: "h-[30px] w-[30px] rounded-full"%>
+                            <%else%>
+                                <div class="rounded-full h-[30px] w-[30px] bg-blue-200 capitalize text-[80px] flex justify-center items-center"><%=current_vendor.shop_name[0]%></div>
+                            <% end %>
+                        </div>
+                        <span class="text-[#2e2e2e] font-medium"><%=current_vendor.shop_name%></span>
+                    <% end %>
                 <%= button_to "Sign Out", destroy_vendor_session_path, method: :delete, 
                     class: "bg-[#f25c54] hover:bg-[#d94b43] text-white px-4 py-2 rounded-md text-sm font-medium" %>
             <% else %>
@@ -18,6 +25,6 @@
                     class: "bg-[#f25c54] hover:bg-[#d94b43] text-white px-4 py-2 rounded-md text-sm font-medium" %>
             <% end %>
         </div>
-
+        
     </div>
 </nav>
