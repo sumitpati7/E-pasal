@@ -1,5 +1,39 @@
-<div class="flex gap-1 mx-3">
-<%=button_to "Add Product",new_product_path,method: :get,class:"w-full px-4 py-2 mt-6 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
-<%=button_to "All Product",new_product_path,method: :get,class:"w-full px-4 py-2 mt-6 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
-<%=button_to "Add Category",new_product_category_path	,method: :get,class:"w-full px-4 py-2 mt-6 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
+<div class="w-[60%] mx-auto min-h-[calc(100vh_-_68px)] py-4">
+    <div class="flex gap-1 mx-3 border-b py-2">
+        <%=button_to "All Product",products_path,method: :get,class:"w-full px-4 py-2 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
+        <%=button_to "Add Product",new_product_path,method: :get,class:"w-full px-4 py-2 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
+    </div>
+    <div class="products grid grid-cols-2">
+        <% @vendor.products.each_with_index do |product, index| %>
+            <div class="movie w-[150px] md:w-[300px] float-left pr-3 my-4">
+                <div
+                  class="movie-image float-left w-[150px] md:w-[300px] h-[225px] md:h-[450px] relative group"
+                >
+                  <span
+                    class="play absolute w-[150px] p-4 md:w-[300px] h-[225px] md:h-[450px] block z-[2] cursor-pointer hidden group-hover:bg-black group-hover:bg-opacity-70 group-hover:block left-0 top-0 overflow-y-auto"
+                  >
+                    <span class="text-[12px] md:text-sm text-white">
+                      Description: <%= product.description%> <br />
+                    </span>
+                  </span>
+                  <img
+                    class="w-[150px] md:w-[300px] h-[225px] md:h-[450px]"
+                    src="<%=%>"
+                    alt=""
+                  />
+                </div>
+                <div class="rating float-left w-full text-[12px]">
+                  <div class="w-full pt-2 text-sm font-semibold font-[poppins]">
+                    <%= product.name %>
+                  </div>
+                  <p class="float-left  text-black font-[bold]">price</p>
+                  <div class="stars float-left h-full flex items-center ml-0.5">
+                  </div>
+                  <span class="comments float-right pl-3">
+                    <%=product.price%>
+                  </span>
+                </div>
+              </div>
+        <% end %>
+    </div>
 </div>
