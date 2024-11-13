@@ -1,4 +1,5 @@
 class ProductCategoriesController < ApplicationController
+  before_action :authenticate_vendor!
   def new
     @category=ProductCategory.new
   end
