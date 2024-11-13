@@ -8,7 +8,10 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to root_path, notice: "The Product was added sucessfully."
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: "The Product was added sucessfully." }
+        format.turbo_stream
+      end
     else
       render :new, status: :unprocessable_entity
     end
