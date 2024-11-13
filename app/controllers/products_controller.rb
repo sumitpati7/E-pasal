@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to vendor_path(current_vendor.id), notice: "The Product was added sucessfully."
+      redirect_to root_path, notice: "The Product was added sucessfully."
     else
       render :new, status: :unprocessable_entity
     end
