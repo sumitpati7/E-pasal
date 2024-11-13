@@ -1,6 +1,7 @@
 <div class="w-full py-4 min-h-[calc(100vh_-_68px)] flex justify-center items-center ">
   <div class=" w-[60%]">
     <h2 class="text-3xl font-semibold text-center text-[#2e2e2e] mb-6">Add Category</h2>
+<%=turbo_frame_tag "add-product" do%>
 <%=simple_form_for @category , html: { class: "w-full max-w-full mx-auto p-8 bg-white rounded-lg shadow-md space-y-6"} do |f|%>
     <%= f.input :name,required: true,
     autofocus:true,
@@ -10,5 +11,6 @@
         
     <%= f.button :submit ,class:"w-full px-4 py-2 mt-6 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
 <% end %>
+<%end%>
 </div>
 </div>>

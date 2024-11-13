@@ -19,6 +19,8 @@
 
   <body class="bg-[#f7f7f7]">
     <%= render 'shared/navbar'%>
+    <div class="notice"><%=notice%></div>
+    <div class="alert"><%=alert%></div>
     <div class="min-h-[calc(100vh_-_68px)] h-full max-h-max"><%= yield %></div>
   </body>
 </html>

@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
 
-  root "vendors#show"
+  root "vendors#index"
   
   # Resources
   resources :product_categories, only: [ :new, :create ]

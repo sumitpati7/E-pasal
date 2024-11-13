@@ -6,7 +6,10 @@ class ProductCategoriesController < ApplicationController
   def create
     @category=ProductCategory.new(category_params)
     if @category.save
-      redirect_to root_path, notice: "A Category was added sucessfully."
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: "A Category was added sucessfully." }
+        format.turbo_stream
+      end
     else
       render :new, status: :unprocessable_entity
     end
