@@ -1,1 +1,3 @@
-<%=render "shared/product_form", product: @product%>
+<%=turbo_frame_tag "add_product" do%>
+    <%=render "shared/product_form", product: @product%>
+<%end%>
