@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
     if @product.save
       respond_to do |format|
         format.html { redirect_to root_path, notice: "The Product was added sucessfully." }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice]="The Product was added sucessfully." }
       end
     else
       render :new, status: :unprocessable_entity
