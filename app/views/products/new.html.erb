@@ -1,3 +1,9 @@
-<%=turbo_frame_tag "add_product" do%>
-    <%=render "shared/product_form", product: @product%>
-<%end%>
+<div class="w-full py-4 min-h-[calc(100vh_-_68px)] flex justify-center items-center "></div>
+  <div class=" w-[60%]">
+    <%=turbo_frame_tag "add_product" do%>
+    <%= link_to "Cancel", root_path, class: "" %>
+    <h2 class="text-3xl font-semibold text-center text-[#2e2e2e] mb-6">Add Product</h2>
+        <%=render "shared/product_form", product: @product%>
+    <%end%>
+</div>
+</div>

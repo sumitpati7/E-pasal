@@ -7,9 +7,11 @@ method: :get,class:"w-full px-4 py-2 mt-6 text-white bg-[#f25c54] rounded-md hov
 </div>
 
 <%=turbo_frame_tag "add_product"%>
-<h1 class="text-5xl text-[#f25c54] font-semibold my-4">Products</h1>
-<table class="w-full">
-    <% @vendor.products.each_with_index do |product, index| %>
-    <%= render "shared/product", product: product, index: index %>
-    <% end %>
-</table>
+<div>
+    <h1 class="text-5xl text-[#f25c54] font-semibold my-4">Products</h1>
+        <%= turbo_frame_tag "products" do %>
+            <% @vendor.products.each_with_index do |product, index| %>
+                <%= render "shared/product", product: product, index: index %>
+            <% end %>
+        <% end %>
+</div>

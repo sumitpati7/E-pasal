@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   # Resources
   resources :product_categories, only: [ :new, :create ]
   resources :vendors, only: %i[new create index edit show]
-  resources :products, only: %i[ new create edit ]
+  resources :products
 
  
 end
