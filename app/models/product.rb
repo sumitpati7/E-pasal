@@ -28,6 +28,6 @@ class Product < ApplicationRecord
   validates :name, :brand, :description, :price, :product_category_id, :vendor_id, presence: true
 
   after_create_commit -> { broadcast_append_to "products", partial: 'shared/product', locals: { product: self }, target: "products"}
-  after_update_commit -> { broadcast_replace_to "products", partial: 'shared/product', locals: { product: self }, target: "products"}
+  after_update_commit -> { broadcast_replace_to "products", partial: 'shared/product', locals: { product: self }}
   after_destroy_commit -> { broadcast_remove_to "products"}
 end
