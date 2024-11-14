@@ -9,7 +9,7 @@ module Api
 
         def show
           product=Product.find(params[:id])
-          render json: product
+          render json: product.as_json(only: [ :id, :name, :brand, :description, :price, :product_category_id, :stock, :discount_percentage, :created_at, :updated_at, :vendor_id ])
         end
 
         def create
@@ -38,7 +38,7 @@ module Api
 
         private
         def product_params
-          params.require(:product).permit(:name, :brand, :description, :price, :product_category_id, :stock, :vendor_id, :discount_percentage, product_image:[])
+          params.require(:product).permit(:name, :brand, :description, :price, :product_category_id, :stock, :vendor_id, :discount_percentage, product_image: [])
         end
     end
   end
