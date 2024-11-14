@@ -1,5 +1,4 @@
 <%= turbo_frame_tag @product do%>
-    <%= link_to "Cancel", root_path, class: "" %>
-    <h2 class="text-3xl font-semibold text-center text-[#2e2e2e] mb-6">Edit Product</h2>
+    <h2 class="text-3xl font-semibold text-center text-[#2e2e2e] my-6">Edit Product</h2>
     <%= render "shared/product_form", product: @product %>
 <% end %>
