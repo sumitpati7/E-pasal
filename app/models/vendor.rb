@@ -22,4 +22,9 @@ class Vendor < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :products
   has_one_attached :vendor_image
+
+  def image_url
+    # vendor_image.map { |image| Rails.application.routes.url_helpers.rails_blob_url(image, only_path: true) }
+    Rails.application.routes.url_helpers.rails_blob_url(vendor_image, only_path: true)
+  end
 end

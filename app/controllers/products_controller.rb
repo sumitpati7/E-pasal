@@ -6,7 +6,6 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-
     if @product.save
       respond_to do |format|
         format.html { redirect_to root_path, notice: "The Product was added sucessfully." }
@@ -23,6 +22,9 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
+    # if params[:product][:product_image].present?
+    #   @product.product_image.attach(params[:product][:product_image])
+    # end
     if @product.update(product_params)
       respond_to do |format|
         format.html { redirect_to root_path, notice: "Product updated successfully!" }
