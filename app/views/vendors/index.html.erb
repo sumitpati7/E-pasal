@@ -1,12 +1,15 @@
-<div class="w-[70%] mx-auto min-h-[calc(100vh_-_68px)] py-4">
-    <div class="flex gap-1 mx-3 border-b py-2">
-        <%=button_to "All Product",products_path,method: :get,class:"w-full px-4 py-2 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
-        <%=button_to "Add Product",new_product_path,method: :get,class:"w-full px-4 py-2 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
-    </div>
-    <h1 class="text-5xl text-[#f25c54] font-semibold my-4">Products</h1>
-        <table class="w-full">
-            <% @vendor.products.each_with_index do |product, index| %>
-            <%= render "shared/product", product: product, index: index %>
-            <% end %>
-        </table>
+<div class="flex gap-1 mx-3">
+<%=button_to "Add Product",new_product_path,
+data:{turbo_frame:"add_product"},
+method: :get,class:"w-full px-4 py-2 mt-6 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
+
+<%=button_to "All Product",new_product_path,method: :get,class:"w-full px-4 py-2 mt-6 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
 </div>
+
+<%=turbo_frame_tag "add_product"%>
+<h1 class="text-5xl text-[#f25c54] font-semibold my-4">Products</h1>
+<table class="w-full">
+    <% @vendor.products.each_with_index do |product, index| %>
+    <%= render "shared/product", product: product, index: index %>
+    <% end %>
+</table>
