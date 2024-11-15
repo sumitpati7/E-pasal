@@ -3,7 +3,7 @@ module Api
     class ProductCategoriesController < ApplicationController
       def index
         categories=ProductCategory.all
-        render json: categories.as_json(only: [ :id, :name ])
+        render json: categories, each_serializer: ProductCategorySerializer
       end
     end
   end
