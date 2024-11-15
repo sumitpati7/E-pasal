@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   root "vendors#index"
 
   # Resources
-  resources :product_categories, only: [ :new, :create ]
+  resources :product_categories, only: [ :new, :create, :edit, :update, :index, :destroy ]
   resources :vendors, only: %i[new create index edit show]
   resources :products, only: %i[new create index edit update destroy]
 
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :products
       resources :product_categories, only: [ :index ]
-      resources :vendors, only: [ :index, :show]
+      resources :vendors, only: [ :index, :show ]
     end
  end
 end
