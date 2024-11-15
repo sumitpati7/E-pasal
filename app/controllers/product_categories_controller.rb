@@ -17,6 +17,6 @@ class ProductCategoriesController < ApplicationController
 
   private
   def category_params
-    params.require(:product_category).permit(:name)
+    params.require(:product_category).permit(:name, :icon)
   end
 end

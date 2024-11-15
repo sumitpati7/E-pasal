@@ -4,7 +4,7 @@ module Api
       
       def index
         vendors=Vendor.all
-        render json: vendors, each_serializer: VendorSerializer
+        render json: vendors
       end
 
       def show
