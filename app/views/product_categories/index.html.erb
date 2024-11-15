@@ -1,10 +1,10 @@
 <%@categories.each do |category| %>
-<div class="flex justify-around border-b ">
+<div class="flex justify-around border-b w-[80%] mx-auto ">
 
-    <li class=""><%=category.name%></li>
-    <li class="ml-auto "><%=category.icon%></li>
-    <%=link_to "Edit",edit_product_category_path(category.id),class:"bg-blue-400 rounded text-white m-2 p-2 hover:bg-blue-600 ml-auto"%>
-    <%=link_to "Delete",product_category_path(category.id),data:{turbo_method: :delete,turbo_confirm: "Are you sure?"},class:"bg-red-400 rounded text-white m-2 p-2 hover:bg-red-600 "%>
+    <li class="w-[30%]"><%=category.name%></li>
+    <li class="mr-auto"><%=category.icon%></li>
+    <%=link_to "Edit",edit_product_category_path(category.id),class:"bg-blue-400 rounded text-white m-2 p-2 hover:bg-blue-600 ml-auto "%>
+    <%=link_to "Delete",product_category_path(category.id),data:{turbo_method: :delete,turbo_confirm: "Are you sure?"},class:"bg-red-400 rounded text-white m-2 p-2 hover:bg-red-600  "%>
 </div>
 
 <%end%>
