@@ -65,4 +65,4 @@ gem "activeadmin"
 gem "devise"
 gem "sassc"
 gem "annotate"
-
+gem "active_model_serializers"
