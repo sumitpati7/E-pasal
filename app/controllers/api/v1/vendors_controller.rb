@@ -1,6 +1,6 @@
 module Api
   module V1
-    class VendorsController < ApplicationController
+    class VendorsController < Api::V1::ApplicationController
       
       def index
         vendors=Vendor.all
