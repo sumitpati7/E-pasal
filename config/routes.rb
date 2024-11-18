@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     omniauth: "vendors/omniauth",
     confirmations: "vendors/confirmations"
   }
-  devise_for :users
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -31,6 +31,11 @@ Rails.application.routes.draw do
       resources :products
       resources :product_categories, only: [ :index ]
       resources :vendors, only: [ :index, :show]
+      resources :orders, only: [ :index, :show]
+
+      devise_for :users, controllers: {
+        registrations: "api/v1/sign_up",
+  }
     end
  end
 end
