@@ -1,14 +1,17 @@
-class Api::V1::OrdersController < ApplicationController
+class Api::V1::OrdersController < Api::V1::ApplicationController
   def index
     orders = Order.all
     render json: orders
   end
   def create
+    puts params[:user_id]
     order = Order.new(order_params)
 
     if order.save
       if params[:order_products].present?
+        # order_products = order.order_products.build(products_params)
         order_products = order.order_products.build(products_params)
+
         # if order_products.all?(&:save)
         if order_products.all? { |product| product.save }
           render json: {
@@ -33,7 +36,7 @@ class Api::V1::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:user_id)
+    params.permit(:user_id)
   end
 
   def products_params
