@@ -3,7 +3,7 @@
 <div class="flex gap-1 mx-3 ">
     <%=link_to "Add Product",new_product_path,
     data:{turbo_frame:"add_product"},
-    method: :get,class:"w-full px-4 py-2 mt-6 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
+    method: :get,class:"w-full px-4 py-2 mt-6 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54] gap-[0]"%>
 
     <%=link_to "All Categories",product_categories_path,class:"w-full px-4 py-2 mt-6 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
 </div>
@@ -13,11 +13,11 @@
 <h1 class="text-5xl text-[#f25c54] font-semibold my-4">Products</h1>
     <%= turbo_frame_tag "products" do %>
     <div class="border-b w-full bg-gray-200 min-w-[1045px] grid grid-cols-[auto_auto_auto_auto_auto_auto]">
-        <div class="px-2 py-3 flex items-center min-w-[522px] text-center">
+        <div class="px-2 py-3 flex items-center min-w-[522px] max-w-[522px] text-center">
             Image
         </div>
-        <div class="px-2 py-3 text-[#2e2e2e] text-center min-w-[100px] max-w-[100px] "> Price</div>
-        <div class="px-2 py-3 text-[#2e2e2e] text-center min-w-[55px] max-w-[45px]"> Stock </div>
+        <div class="px-2 py-3 text-[#2e2e2e] text-center min-w-[100px] max-w-[100px]"> Price</div>
+        <div class="px-2 py-3 text-[#2e2e2e] text-center min-w-[55px] max-w-[55px]"> Stock </div>
         <div class="px-2 py-3 text-[#2e2e2e] min-w-[200px] max-w-[200px]"> Created at </div>
         <div class="px-2 py-3">
             Edit
