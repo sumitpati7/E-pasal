@@ -1,8 +1,10 @@
 class Api::V1::OrdersController < Api::V1::ApplicationController
   def index
-    orders = Order.all
+    orders = Order.where("user_id": params[:user_id])
     render json: orders
   end
+
+
   def create
     puts params[:user_id]
     order = Order.new(order_params)

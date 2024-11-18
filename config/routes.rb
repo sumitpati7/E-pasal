@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :product_categories, only: [ :new, :create, :edit, :update, :index, :destroy ]
   resources :vendors, only: %i[new create index edit show]
   resources :products, only: %i[new create index edit update destroy]
+  resources :orders, only: %i[ index ]
 
  namespace :api do
     namespace :v1 do

@@ -10,7 +10,7 @@
                             <% if current_vendor.vendor_image.attached? %>
                                 <%=image_tag current_vendor.vendor_image, class: "h-[30px] w-[30px] rounded-full"%>
                             <%else%>
-                                <div class="rounded-full h-[30px] w-[30px] bg-blue-200 capitalize text-[80px] flex justify-center items-center"><%=current_vendor.shop_name[0]%></div>
+                                <div class="rounded-full h-[30px] w-[30px] bg-blue-200 capitalize text-[20px] flex justify-center items-center"><%=current_vendor.shop_name[0]%></div>
                             <% end %>
                         </div>
                         <span class="text-[#2e2e2e] font-medium"><%=current_vendor.shop_name%></span>
