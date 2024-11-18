@@ -1,5 +1,9 @@
 class ProductCategoriesController < ApplicationController
   before_action :authenticate_vendor!
+
+  def index
+    @categories=ProductCategory.all.order(:id)
+  end
   def new
     @category=ProductCategory.new
   end
@@ -12,6 +16,25 @@ class ProductCategoriesController < ApplicationController
       end
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+  def edit
+    @category=ProductCategory.find(params[:id])
+  end
+  def update
+    @category=ProductCategory.find(params[:id])
+    if @category.update(category_params)
+      redirect_to product_categories_path, notice: "Product updated sucessfully."
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @category=ProductCategory.find(params[:id])
+
+    if @category.destroy
+      redirect_to product_categories_path, notice: "Product Deleted sucessfully"
     end
   end
 

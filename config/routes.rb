@@ -22,17 +22,16 @@ Rails.application.routes.draw do
   root "vendors#index"
 
   # Resources
-  resources :product_categories, only: [ :new, :create ]
+  resources :product_categories, only: [ :new, :create, :edit, :update, :index, :destroy ]
   resources :vendors, only: %i[new create index edit show]
   resources :products, only: %i[new create index edit update destroy]
 
  namespace :api do
     namespace :v1 do
-      resources :products
+      resources :products, only: [ :index, :show ]
       resources :product_categories, only: [ :index ]
       resources :vendors, only: [ :index, :show]
       resources :orders, only: [ :index, :show]
-
       devise_for :users, controllers: {
         registrations: "api/v1/sign_up",
         sessions: "api/v1/sign_in"
