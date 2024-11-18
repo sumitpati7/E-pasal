@@ -1,4 +1,8 @@
 class Api::V1::OrdersController < ApplicationController
+  def index
+    orders = Order.all
+    render json: orders
+  end
   def create
     order = Order.new(order_params)
 
