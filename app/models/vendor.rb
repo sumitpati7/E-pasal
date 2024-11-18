@@ -23,12 +23,14 @@ class Vendor < ApplicationRecord
   has_many :products
   has_one_attached :vendor_image
 
+  has_many :order_products, through: :products
+
   def image_url
     # vendor_image.map { |image| Rails.application.routes.url_helpers.rails_blob_url(image, only_path: true) }
     if vendor_image.attached?
       "localhost:3000"+  Rails.application.routes.url_helpers.rails_blob_url(vendor_image, only_path: true)
     else
-      ''
+      ""
     end
   end
 end

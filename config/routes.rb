@@ -30,11 +30,15 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :products, only: [ :index, :show ]
       resources :product_categories, only: [ :index ]
-      resources :vendors, only: [ :index, :show]
-      resources :orders, only: [ :index, :show]
+      resources :vendors, only: [ :index, :show ]
+      # resources :orders, only: [ :index, :show]
+      resources :users do
+          resources :orders, only: [ :index, :create ]
+      end
       devise_for :users, controllers: {
         registrations: "api/v1/sign_up",
         sessions: "api/v1/sign_in"
+
   }
     end
  end
