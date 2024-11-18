@@ -31,6 +31,10 @@ Rails.application.routes.draw do
       resources :products, only: [ :index, :show ]
       resources :product_categories, only: [ :index ]
       resources :vendors, only: [ :index, :show ]
+      resources :users do
+        resources :orders, only: [ :create ]
+
+      end
     end
  end
 end
