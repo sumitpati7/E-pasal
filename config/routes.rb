@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 
       devise_for :users, controllers: {
         registrations: "api/v1/sign_up",
+        sessions: "api/v1/sign_in"
   }
     end
  end
