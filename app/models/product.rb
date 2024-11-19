@@ -3,13 +3,13 @@
 # Table name: products
 #
 #  id                  :bigint           not null, primary key
-#  name                :string
-#  brand               :string
+#  name                :string           not null
+#  brand               :string           default("No Brand"), not null
 #  description         :text
-#  price               :string
+#  price               :string           not null
 #  product_category_id :bigint           not null
-#  stock               :integer
-#  discount_percentage :integer
+#  stock               :integer          not null
+#  discount_percentage :integer          default(0), not null
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  vendor_id           :bigint           not null
