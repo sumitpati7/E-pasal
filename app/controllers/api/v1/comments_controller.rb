@@ -1,23 +1,28 @@
 class Api::V1::CommentsController < Api::V1::ApplicationController
     def create
-      begin user=User.find(params[:user_id])
+      begin product=Product.find(params[:product_id])
         # comment=Comment.new(comment_params.merge())
-        comment=user.comments.build(comment_params.merge(product_id: params[:product_id]))
+        comment=product.comments.build(comment_params.merge(user_id: params[:user_id]))
         if comment.save
-          render json: {}, status: :ok
+          render json: {
+            message: "Comment Created sucessfully",
+            data: comment
+          }, status: :created
         end
       rescue ActiveRecord::RecordNotFound
-         render json: { message: "User not found" }, status: :not_found
+         render json: { message: "Product not found" }, status: :not_found
       end
     end
 
     def destroy
       comment=Comment.find_by(id: params[:id])
-      if comment.destroy
-        render json: { message: "Delete success" }, status: :no_head
+      if comment
+        comment.destroy
+        render json: { message: "Delete success" }, status: :ok
+
       else
           # render json: { message: comment.errors.full_message }
-          render json: { message: "Comment not found" }
+          render json: { message: "Comment not found" }, status: :not_found
       end
     end
     private
