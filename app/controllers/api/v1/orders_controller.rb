@@ -4,6 +4,15 @@ class Api::V1::OrdersController < Api::V1::ApplicationController
     render json: orders
   end
 
+  def show
+    order=Order.find_by(id: params[:id])
+    if order
+      render json: { message: "Order found", data: order }, status: :ok
+    else
+      render json: { message: "Order Not Found" }, status: :not_found
+    end
+  end
+
   def create
     
     pid = params["order_products"].first["product_id"]

@@ -1,15 +1,19 @@
 module Api
   module V1
     class VendorsController < Api::V1::ApplicationController
-      
-      def index
-        vendors=Vendor.all
-        render json: vendors
-      end
+      # def index
+      #   vendors=Vendor.all
+      #   render json: vendors
+      # end
 
       def show
-        vendor=Vendor.find(params[:id])
-        render json: vendor, each_serializer: VendorSerializer
+        begin
+          vendor=Vendor.find(params[:id])
+          # render json: vendor, each_serializer: VendorSerializer
+          render json: { message: "Vendor found", data: VendorSerializer.new(vendor).as_json }
+        rescue
+          render json: { message: "Vendor not found" }
+        end
       end
     end
   end
