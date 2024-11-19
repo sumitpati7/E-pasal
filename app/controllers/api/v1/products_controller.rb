@@ -8,9 +8,15 @@ module Api
         end
 
         def show
-          product=Product.find(params[:id])
-          # render json: product.as_json(only: [ :id, :name, :brand, :description, :price, :product_category_id, :stock, :discount_percentage, :created_at, :updated_at, :vendor_id ])
-          render json: product, each_serializer: ProductSerializer
+          begin product=Product.find(params[:id])
+            # render json: product.as_json(only: [ :id, :name, :brand, :description, :price, :product_category_id, :stock, :discount_percentage, :created_at, :updated_at, :vendor_id ])
+            render json: product, each_serailizer: ProductSerializer
+
+            # render json:{message:"Record Found",data: product},status: :ok
+
+          rescue ActiveRecord::RecordNotFound
+            render json: { message: "Record not Found" }, status: :unprocessable_entity
+          end
         end
 
         def create
