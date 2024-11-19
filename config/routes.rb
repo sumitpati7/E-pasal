@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       # resources :orders, only: [ :index, :show]
       resources :users do
           resources :orders, only: [ :index, :create ]
+          resources :comments, only: [ :destroy, :create ]
       end
       devise_for :users, controllers: {
         registrations: "api/v1/sign_up",
