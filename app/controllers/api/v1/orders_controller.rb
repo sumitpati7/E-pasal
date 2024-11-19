@@ -6,8 +6,7 @@ class Api::V1::OrdersController < Api::V1::ApplicationController
 
 
   def create
-    puts params[:user_id]
-    order = Order.new(order_params)
+    order = Order.new(user_id: params[:user_id])
 
     if order.save
       if params[:order_products].present?
