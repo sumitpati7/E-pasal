@@ -1,6 +1,5 @@
 <%= turbo_frame_tag orderProduct do %>
-    <tr class="<%= index.even? ? 'bg-white' : 'bg-gray-200' %> hover:bg-gray-400">
-        <td class="px-4 py-3"> <%= index+1 %> </td>
+    <tr class="bg-gray-200 hover:bg-gray-400">
         <td class="px-4 py-3 flex justify-center"> 
             <% if orderProduct.product.product_image.attached? %>
                 <%= image_tag url_for(orderProduct.product.product_image[0]), class: "w-10 h-10 rounded mr-4" %>

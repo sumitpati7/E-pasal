@@ -13,4 +13,8 @@
 class OrderProduct < ApplicationRecord
   belongs_to :order
   belongs_to :product
+
+  after_create_commit -> { broadcast_append_to "orders", partial: "shared/orderProduct", locals: { orderProduct: self }, target: "orders" }
+  after_update_commit -> { broadcast_replace_to "orders", partial: "shared/orderProduct", locals: { orderProduct: self } }
+  after_destroy_commit -> { broadcast_remove_to "orders" }
 end
