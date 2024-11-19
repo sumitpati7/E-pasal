@@ -17,6 +17,12 @@
                     <% end %>
                 <%= button_to "Sign Out", destroy_vendor_session_path, method: :delete, 
                     class: "bg-[#f25c54] hover:bg-[#d94b43] text-white px-4 py-2 rounded-md text-sm font-medium" %>
+            <div class="flex justify-center items-center text-xl text-white hover:text-opacity-80 relative px-2">
+              <div id="cart_count" class="absolute top-[-10px] right-[-6px] h-[24px] text-[12px] w-[24px] flex justify-center items-center bg-blue-500 font-semibold text-red-600 bg-opacity-60 rounded-full"><%= current_vendor.order_products.count %></div>
+                <%= link_to orders_path do %>
+                    <i class="fa-solid fa-cart-shopping text-black" title="Orders"></i>
+                <%end%>
+            </div>
             <% else %>
                 <%= link_to "Sign In", new_vendor_session_path, 
                     class: "bg-gray-100 hover:bg-[#f7f7f7] text-[#2e2e2e] px-4 py-2 rounded-md text-sm font-medium" %>
