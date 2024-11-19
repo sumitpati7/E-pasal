@@ -20,7 +20,7 @@
             <div class="flex justify-center items-center text-xl text-white hover:text-opacity-80 relative px-2">
               <div id="cart_count" class="absolute top-[-10px] right-[-6px] h-[24px] text-[12px] w-[24px] flex justify-center items-center bg-blue-500 font-semibold text-red-600 bg-opacity-60 rounded-full"><%= current_vendor.order_products.count %></div>
                 <%= link_to orders_path do %>
-                    <i class="fa-solid fa-cart-shopping text-black" title="Cart"></i>
+                    <i class="fa-solid fa-cart-shopping text-black" title="Orders"></i>
                 <%end%>
             </div>
             <% else %>
