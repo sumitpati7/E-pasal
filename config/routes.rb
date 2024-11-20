@@ -31,6 +31,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :products, only: [ :index, :show ] do
         resources :comments, only: [ :destroy, :create ]
+        collection do
+          get "search", to: "products#search"
+        end
       end
       resources :product_categories, only: [ :index, :show ]
       resources :vendors, only: [ :index, :show ]

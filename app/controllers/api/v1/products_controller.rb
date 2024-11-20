@@ -25,29 +25,14 @@ module Api
           end
         end
 
-        # def create
-        #   product=Product.new(product_params)
-        #   if product.save
-        #     render json: product, status: :created
-        #   else
-        #     render json: product.errors, status: :unprocessable_entity
-        #   end
-        # end
-
-        # def update
-        #   product=Product.find(params[:id])
-        #   if model.update(product_params)
-        #     render json: product
-        #   else
-        #     render json: product.erros, status: :unprocessable_entity
-        #   end
-        # end
-
-        # def destroy
-        #   product=Product.find(params[:id])
-        #   product.destroy
-        #   head :no_content
-        # end
+        def search
+          keyword = params[:keyword]
+          result = Product.includes(:product_category).where("name ILIKE :keyword OR description ILIKE :keyword OR brand ILIKE :keyword", keyword: "%#{keyword}%")
+          render json: {
+            message: "Search Results",
+            result: result.map { |product| AllProductSerializer.new(product).serializable_hash }
+          }
+        end
 
         private
         def product_params
