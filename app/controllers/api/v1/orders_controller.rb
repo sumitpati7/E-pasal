@@ -14,39 +14,33 @@ class Api::V1::OrdersController < Api::V1::ApplicationController
   end
 
   def create
-    
-    pid = params["order_products"].first["product_id"]
-    quantity = params["order_products"].first["quantity"].to_i
-    product = Product.find_by_id(pid)
-    render json: { error: "No product available "}, status: 404 and return if product.nil?
-
-    if quantity >= product.stock
-      render json: { error: "Too many quantity ordered"}, status: 422 and return
+    params["order_products"].each do |order_product|
+      pid = order_product["product_id"]
+      quantity = order_product["quantity"].to_i
+      product = Product.find_by_id(pid)
+      render json: { error: "No product available "}, status: 404 and return if product.nil?
+      if quantity >= product.stock
+        render json: { error: "Too many quantity ordered"}, status: 422 and return
+      end
     end
 
-    # created_order_products = []
-    # errors = []
-    
-    # params[:order_products].each do |order_product|
-    #   new_order_product = OrderProduct.new(product_params(order_product))
-    #   if new_order_product.quantity < new_order_product.product.stock
-    #     created_order_products << new_order_product
-    #   else
-    #     errors << {order_product: new_order_product, error: "Product out of stock"}
-    #   end
-    # end
+    order = Order.new(user_id: params[:user_id])
+    if order.save
+      order_products = order.order_products.build(products_params)
+      if order_products.all? { |order_product| order_product.save }
+        render json: {
+          message: "Order and associated products created successfully.",
+          order: order,
+          products: order_products
+        }, status: :created
+      else
+        render json: {
+            message: "Order created, but failed to save associated products.",
+            errors: order_products.map(&:errors).flat_map(&:full_messages)
+          }, status: :unprocessable_entity
+      end
+    end
 
-    # if errors.empty?
-    #   order = Order.new(user_id: params[:user_id])
-    #   if order.save
-    #     created_order_products.each do |created_order_product|
-    #       created_order_product.order_id = order.id
-    #       created_order_product.save
-    #     end
-    #     render json: { created_order_products: created_order_products}
-    #   end
-    # else
-    # end
   end
 
   private

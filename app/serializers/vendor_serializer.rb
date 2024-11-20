@@ -16,5 +16,6 @@
 #  updated_at             :datetime         not null
 #
 class VendorSerializer < ActiveModel::Serializer
-  attributes :id, :image_url, :email, :owner_name, :shop_name, :address, :contact_number, :created_at, :updated_at
+  attributes :id, :image_url, :shop_name, :address, :contact_number
+  has_many :products
 end

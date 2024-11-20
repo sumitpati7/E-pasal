@@ -15,8 +15,12 @@
 #  vendor_id           :bigint           not null
 #
 class ProductSerializer < ActiveModel::Serializer
+<<<<<<< HEAD
+  attributes :id, :name, :brand, :image_urls, :description, :price, :stock, :discount_percentage
+=======
   # attributes :id, :name, :brand, :image_urls, :description, :price, :stock, :discount_percentage, :product_category_id, :vendor_id, :created_at, :updated_at
   attributes :id, :title, :brand, :images, :description, :price, :stock, :discount_percentage, :product_category_id, :vendor_id, :created_at, :updated_at
+>>>>>>> main
   belongs_to :product_category
   has_many :comments
   belongs_to :vendor
