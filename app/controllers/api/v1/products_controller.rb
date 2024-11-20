@@ -4,7 +4,7 @@ module Api
     class ProductsController < Api::V1::ApplicationController
         def index
           products=Product.all
-          render json: products, each_serializer: ProductSerializer
+          render json: products, each_serializer: AllProductSerializer
         end
 
         def show
