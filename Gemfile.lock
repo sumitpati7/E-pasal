@@ -421,6 +421,7 @@ DEPENDENCIES
   image_processing (~> 1.2)
   jbuilder
   jsbundling-rails
+  kaminari
   pg (~> 1.1)
   pry
   puma (>= 5.0)
