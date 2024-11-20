@@ -4,7 +4,10 @@ module Api
     class ProductsController < Api::V1::ApplicationController
         def index
           products=Product.all
-          render json: products, each_serializer: AllProductSerializer
+          render json:
+          { message: "Products Found",
+          data: products.map { |product| AllProductSerializer.new(product).serializable_hash }
+          }, status: :ok
         end
 
         def show
