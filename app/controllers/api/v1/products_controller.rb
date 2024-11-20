@@ -27,11 +27,17 @@ module Api
 
         def search
           keyword = params[:keyword]
-          result = Product.includes(:product_category).where("name ILIKE :keyword OR description ILIKE :keyword OR brand ILIKE :keyword", keyword: "%#{keyword}%")
-          render json: {
+          result = Product.where("name ILIKE :keyword OR description ILIKE :keyword OR brand ILIKE :keyword", keyword: "%#{keyword}%")
+          if result.empty?
+            render json: {
+              message: "No result found"
+            }
+          else
+            render json: {
             message: "Search Results",
             result: result.map { |product| AllProductSerializer.new(product).serializable_hash }
           }
+          end
         end
 
         private
