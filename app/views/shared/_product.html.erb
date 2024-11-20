@@ -1,12 +1,14 @@
 <%= turbo_frame_tag product do %>
     <div class="border-b w-full hover:bg-gray-200 flex justify-around">
-        <div class="px-2 py-3 flex items-center mr-5 min-w-[522px] max-w-[522px]">
+<%=link_to product_path(product.id),data:{turbo_frame: "_top"},class:"flex" do%>
+        <div class="px-2 py-3  items-center  min-w-[522px] max-w-[522px]">
             <% if product.product_image.attached? %>
                 <%= image_tag url_for(product.product_image[0]), class: "w-10 h-10 rounded mr-4" %>
             <% else %>
                 <img src="" alt="" class="w-10 h-10 rounded mr-4">
             <% end %>
             <div class="text-[#2e2e2e] font-medium "> <%= product.name %> </div>
+    <%end%>
         </div>
         <div class="px-2 py-3 text-[#2e2e2e] text-center min-w-[100px] max-w-[100px]"> Rs. <%= product.price %> </div>
         <div class="px-2 py-3 text-[#2e2e2e] text-center min-w-[55px] max-w-[45px]"> <%= product.stock %> </div>
