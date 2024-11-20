@@ -32,6 +32,10 @@ class Product < ApplicationRecord
   after_destroy_commit -> { broadcast_remove_to "products" }
 
   def image_urls
-    product_image.map { |image| "localhost:3001"+Rails.application.routes.url_helpers.rails_blob_url(image, only_path: true) }
+    if image_url.nil?
+      product_image.map { |image| "localhost:3001"+Rails.application.routes.url_helpers.rails_blob_url(image, only_path: true) }
+    else
+      image_url
+    end
   end
 end
