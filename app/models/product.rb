@@ -33,7 +33,7 @@ class Product < ApplicationRecord
 
   def image_urls
     if image_url.nil?
-      product_image.map { |image| "localhost:3001"+Rails.application.routes.url_helpers.rails_blob_url(image, only_path: true) }
+      product_image.map { |image| "http://localhost:3001"+Rails.application.routes.url_helpers.rails_blob_url(image, only_path: true) }
     else
       image_url
     end
