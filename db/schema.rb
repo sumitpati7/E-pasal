@@ -132,6 +132,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_20_070326) do
     t.string "last_name"
     t.text "address"
     t.string "contact_phone"
+    t.string "password_digest"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
