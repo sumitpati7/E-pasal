@@ -1,11 +1,6 @@
 module Api
   module V1
     class VendorsController < Api::V1::ApplicationController
-      # def index
-      #   vendors=Vendor.all
-      #   render json: vendors
-      # end
-
       def show
         begin
           vendor=Vendor.find(params[:id])
