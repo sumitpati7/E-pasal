@@ -12,23 +12,23 @@
 
 <h1 class="text-5xl text-[#f25c54] font-semibold my-4">Products</h1>
     <%= turbo_frame_tag "products" do %>
-    <div class="border-b w-full bg-gray-200 min-w-[1045px] grid grid-cols-[auto_auto_auto_auto_auto_auto]">
-        <div class="px-2 py-3 flex items-center min-w-[522px] max-w-[522px] text-center">
-            Image
+        <div class="border-b w-full bg-gray-200 min-w-[1045px] grid grid-cols-[auto_auto_auto_auto_auto_auto]">
+            <div class="px-2 py-3 flex items-center min-w-[522px] max-w-[522px] text-center">
+                Image
+            </div>
+            <div class="px-2 py-3 text-[#2e2e2e] text-center min-w-[100px] max-w-[100px]"> Price</div>
+            <div class="px-2 py-3 text-[#2e2e2e] text-center min-w-[55px] max-w-[55px]"> Stock </div>
+            <div class="px-2 py-3 text-[#2e2e2e] min-w-[200px] max-w-[200px]"> Created at </div>
+            <div class="px-2 py-3">
+                Edit
+            </div>
+            <div class="px-2 py-3">
+                Delete
+            </div>
         </div>
-        <div class="px-2 py-3 text-[#2e2e2e] text-center min-w-[100px] max-w-[100px]"> Price</div>
-        <div class="px-2 py-3 text-[#2e2e2e] text-center min-w-[55px] max-w-[55px]"> Stock </div>
-        <div class="px-2 py-3 text-[#2e2e2e] min-w-[200px] max-w-[200px]"> Created at </div>
-        <div class="px-2 py-3">
-            Edit
-        </div>
-        <div class="px-2 py-3">
-            Delete
-        </div>
-    </div>
-            <% @vendor.products.each_with_index do |product, index| %>
-                <%= render "shared/product", product: product, index: index %>
-            <% end %>
-        </table>
+        <% @products.each_with_index do |product, index| %>
+            <%= render "shared/product", product: product, index: index %>
+        <% end %>
+        <div class="flex justify-center p-4"><%= paginate @products %></div>
     <% end %>
 </div>
