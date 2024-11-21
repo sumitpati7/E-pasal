@@ -31,9 +31,13 @@ class Product < ApplicationRecord
   after_update_commit -> { broadcast_replace_to "products", partial: "shared/product", locals: { product: self } }
   after_destroy_commit -> { broadcast_remove_to "products" }
 
-  def image
+  def image_url
     if image_url.nil?
-      "localhost:3001"+  Rails.application.routes.url_helpers.rails_blob_url(vendor_image, only_path: true)
+      if product_image.attached?
+        "localhost:3001"+  Rails.application.routes.url_helpers.rails_blob_url(vendor_image, only_path: true)
+      else
+        ""
+      end
     else
       image_url
     end
