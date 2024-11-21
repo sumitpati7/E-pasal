@@ -15,13 +15,9 @@
 #  vendor_id           :bigint           not null
 #
 class ProductSerializer < ActiveModel::Serializer
-  attributes :id, :name, :brand, :image_url, :description, :price, :stock, :discount_percentage
+  attributes :id, :title, :brand, :image, :description, :price, :stock, :discount_percentage
 
   belongs_to :product_category
   has_many :comments
   belongs_to :vendor
-
-  def title
-    object.name
-  end
 end

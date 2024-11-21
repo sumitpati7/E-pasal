@@ -27,7 +27,7 @@ module Api
 
         def search
           keyword = params[:keyword]
-          result = Product.includes(:product_category).where("name ILIKE :keyword OR description ILIKE :keyword OR brand ILIKE :keyword", keyword: "%#{keyword}%")
+          result = Product.includes(:product_category).where("title ILIKE :keyword OR description ILIKE :keyword OR brand ILIKE :keyword", keyword: "%#{keyword}%")
           render json: {
             message: "Search Results",
             result: result.map { |product| AllProductSerializer.new(product).serializable_hash }
@@ -36,7 +36,7 @@ module Api
 
         private
         def product_params
-          params.require(:product).permit(:name, :brand, :description, :price, :product_category_id, :stock, :vendor_id, :discount_percentage, product_image: [])
+          params.require(:product).permit(:title, :brand, :description, :price, :product_category_id, :stock, :vendor_id, :discount_percentage, product_image: [])
         end
     end
   end
