@@ -3,9 +3,9 @@
 <div class="flex gap-1 mx-3 ">
     <%=link_to "Add Product",new_product_path,
     data:{turbo_frame:"add_product"},
-    method: :get,class:"w-full px-4 py-2 mt-6 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
+    method: :get,class:"w-full px-4 py-2 mt-6 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none text-center focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
 
-    <%=link_to "All Categories",product_categories_path,class:"w-full px-4 py-2 mt-6 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
+    <%=link_to "All Categories",product_categories_path,class:"w-full px-4 py-2 mt-6 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54] text-center"%>
 </div>
 
 <%=turbo_frame_tag "add_product"%>
