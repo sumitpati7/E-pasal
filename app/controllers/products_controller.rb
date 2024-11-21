@@ -3,6 +3,13 @@ class ProductsController < ApplicationController
   def new
     @product=Product.new
   end
+  def show
+    @product=Product.find_by_id(params[:id])
+    if @product
+    else
+      redirect_to root_path
+    end
+  end
 
   def create
     @product = Product.new(product_params)
