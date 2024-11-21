@@ -37,15 +37,13 @@ Rails.application.routes.draw do
       end
       resources :product_categories, only: [ :index, :show ]
       resources :vendors, only: [ :index, :show ]
-      # resources :orders, only: [ :index, :show]
-      resources :users do
-          resources :orders, only: [ :index, :create, :show ]
-      end
       devise_for :users, controllers: {
         registrations: "api/v1/sign_up",
         sessions: "api/v1/sign_in"
-
-  }
+      }
+      resources :users do
+          resources :orders, only: [ :index, :create, :show ]
+      end
     end
  end
 end
