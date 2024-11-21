@@ -5,7 +5,7 @@
             <% if product.product_image.attached? %>
                 <%= image_tag url_for(product.product_image[0]), class: "w-10 h-10 rounded mr-4" %>
             <% else %>
-                <img src="" alt="" class="w-10 h-10 rounded mr-4">
+                <img src="<%= product.image_url %>" alt="" class="w-10 h-10 rounded mr-4">
             <% end %>
             <div class="text-[#2e2e2e] font-medium "> <%= product.title %> </div>
     <%end%>
