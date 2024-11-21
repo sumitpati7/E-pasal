@@ -17,7 +17,7 @@
 class Product < ApplicationRecord
   belongs_to :product_category
   belongs_to :vendor
-  has_many_attached :product_image
+  has_one_attached :product_image
   has_many :comments, dependent: :destroy
   has_many :order_products, dependent: :destroy
   has_many :orders, through: :order_products
@@ -31,9 +31,13 @@ class Product < ApplicationRecord
   after_update_commit -> { broadcast_replace_to "products", partial: "shared/product", locals: { product: self } }
   after_destroy_commit -> { broadcast_remove_to "products" }
 
-  def image_urls
+  def image
     if image_url.nil?
-      product_image.map { |image| "http://localhost:3001"+Rails.application.routes.url_helpers.rails_blob_url(image, only_path: true) }
+      if product_image.attached?
+        "localhost:3001"+  Rails.application.routes.url_helpers.rails_blob_url(product_image, only_path: true)
+      else
+        ""
+      end
     else
       image_url
     end
