@@ -25,7 +25,7 @@ class Product < ApplicationRecord
 
   validates :discount_percentage, numericality: { greater_than_or_equal_to: 0, less_than: 100 }, presence: true
   validates :stock, numericality: { greater_than_or_equal_to: 1 }, presence: true
-  validates :name, :brand, :description, :price, :product_category_id, :vendor_id, presence: true
+  validates :title, :brand, :description, :price, :product_category_id, :vendor_id, presence: true
 
   after_create_commit -> { broadcast_append_to "products", partial: "shared/product", locals: { product: self }, target: "products" }
   after_update_commit -> { broadcast_replace_to "products", partial: "shared/product", locals: { product: self } }
