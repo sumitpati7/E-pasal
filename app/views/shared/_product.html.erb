@@ -3,9 +3,9 @@
 <%=link_to product_path(product.id),data:{turbo_frame: "_top"},class:"flex" do%>
         <div class="px-2 py-3  items-center  min-w-[522px] max-w-[522px]">
             <% if product.product_image.attached? %>
-                <%= image_tag url_for(product.product_image[0]), class: "w-10 h-10 rounded mr-4" %>
+                <%= image_tag url_for(product.product_image), class: "w-10 h-10 rounded mr-4", alt: product.title %>
             <% else %>
-                <img src="<%= product.image_url %>" alt="" class="w-10 h-10 rounded mr-4">
+                <img src="<%= product.image_url %>" alt="<%= product.title %>" class="w-10 h-10 rounded mr-4">
             <% end %>
             <div class="text-[#2e2e2e] font-medium "> <%= product.title %> </div>
     <%end%>
