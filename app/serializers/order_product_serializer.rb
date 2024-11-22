@@ -9,7 +9,6 @@ class OrderProductSerializer < ActiveModel::Serializer
         name: object.product.title,
         price: object.product.price,
         image: object.product.image,
-        discounted_price: object.product.discounted_price,
         discount_percentage: object.product.discount_percentage
         }
     end

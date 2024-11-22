@@ -42,8 +42,4 @@ class Product < ApplicationRecord
       image_url
     end
   end
-
-  def discounted_price
-    price.to_f - (price.to_f * discount_percentage.to_f)/100
-  end
 end
