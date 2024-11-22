@@ -1,7 +1,7 @@
 class Api::V1::OrdersController < Api::V1::ApplicationController
   def index
     orders = Order.where("user_id": params[:user_id])
-    render json: orders
+    render json: { message: "Orders found", orders: orders.map { |order| OrderSerializer.new(order).serializable_hash } }
   end
 
   def show
@@ -18,9 +18,9 @@ class Api::V1::OrdersController < Api::V1::ApplicationController
       pid = order_product["product_id"]
       quantity = order_product["quantity"].to_i
       product = Product.find_by_id(pid)
-      render json: { error: "No product available "}, status: 404 and return if product.nil?
+      render json: { error: "No product available " }, status: 404 and return if product.nil?
       if quantity >= product.stock
-        render json: { error: "Too many quantity ordered"}, status: 422 and return
+        render json: { error: "Too many quantity ordered" }, status: 422 and return
       end
     end
 
@@ -40,7 +40,6 @@ class Api::V1::OrdersController < Api::V1::ApplicationController
           }, status: :unprocessable_entity
       end
     end
-
   end
 
   private
@@ -58,5 +57,4 @@ class Api::V1::OrdersController < Api::V1::ApplicationController
       product.permit(:product_id, :quantity)
     end
   end
-
 end
