@@ -18,6 +18,6 @@ class ProductSerializer < ActiveModel::Serializer
   attributes :id, :title, :brand, :image, :description, :price, :stock, :discount_percentage
 
   belongs_to :product_category
-  has_many :comments
+  has_many :comments, each_serializer: CommentSerializer
   belongs_to :vendor
 end
