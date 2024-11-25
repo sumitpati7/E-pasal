@@ -11,13 +11,11 @@
                         <th class="text-center">OrderDate</th>
                     </tr>
                 </thead>
-                <%= turbo_frame_tag "orders" do %>
-                    <tbody>
+                    <tbody id="orders">
                         <% @orderProducts.each_with_index do |orderProduct, index| %>
                             <%= render "shared/orderProduct", orderProduct: orderProduct, index: index %>
                         <% end %>
                     </tbody>
-                <% end %>
             </table>
     </div>
 </div>
