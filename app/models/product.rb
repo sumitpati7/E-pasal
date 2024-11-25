@@ -18,7 +18,7 @@ class Product < ApplicationRecord
   belongs_to :product_category
   belongs_to :vendor
   has_one_attached :product_image
-  has_many :comments, dependent: :destroy
+  has_many :comments, -> { order(:created_at) }, dependent: :destroy
   has_many :order_products, dependent: :destroy
   has_many :orders, through: :order_products
   has_many :users, through: :comments

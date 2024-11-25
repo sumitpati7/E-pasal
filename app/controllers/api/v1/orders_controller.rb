@@ -31,7 +31,7 @@ class Api::V1::OrdersController < Api::V1::ApplicationController
     order = Order.new(user_id: params[:user_id])
     if order.save
       order_products = order.order_products.build(products_params)
-      if order_products.all? { |order_product| order_product.save }
+      if order_products.all? { |order_product| saveOrderProducts(order_product) }
         render json: {
           message: "Order and associated products created successfully.",
           order: order,
@@ -60,5 +60,11 @@ class Api::V1::OrdersController < Api::V1::ApplicationController
     params.require(:order_products).map do |product|
       product.permit(:product_id, :quantity)
     end
+  end
+
+  def saveOrderProducts(order_product)
+    left_stock = order_product.product.stock - order_product.quantity
+    order_product.product.update(stock: left_stock)
+    order_product.save
   end
 end
