@@ -3,6 +3,13 @@ class ProductsController < ApplicationController
   def new
     @product=Product.new
   end
+  def show
+    @product=Product.find_by_id(params[:id])
+    if @product
+    else
+      redirect_to root_path
+    end
+  end
 
   def create
     @product = Product.new(product_params)
@@ -45,6 +52,6 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:name, :brand, :description, :price, :product_category_id, :stock, :vendor_id, :discount_percentage, product_image:[])
+    params.require(:product).permit(:title, :brand, :description, :price, :product_category_id, :stock, :vendor_id, :discount_percentage, :product_image)
   end
 end

@@ -1,0 +1,21 @@
+<%= turbo_stream_from "orders" %>
+<div class="w-[70%] mx-auto min-h-[calc(100vh_-_68px)] py-4">
+    <div>
+        <h1 class="text-5xl text-[#f25c54] font-semibold my-4">Orders</h1>
+            <table class="w-full border-collapse text-sm text-left text-[#2e2e2e]">
+                <thead>
+                    <tr class="bg-[#f25c54] text-[#4a4a4a] font-medium h-[64px]">
+                        <th class="text-center">Image</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Quantity</th>
+                        <th class="text-center">OrderDate</th>
+                    </tr>
+                </thead>
+                    <tbody id="orders">
+                        <% @orderProducts.each_with_index do |orderProduct, index| %>
+                            <%= render "shared/orderProduct", orderProduct: orderProduct, index: index %>
+                        <% end %>
+                    </tbody>
+            </table>
+    </div>
+</div>

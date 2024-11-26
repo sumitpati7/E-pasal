@@ -3,20 +3,21 @@
 # Table name: products
 #
 #  id                  :bigint           not null, primary key
-#  name                :string
-#  brand               :string
+#  name                :string           not null
+#  brand               :string           default("No Brand"), not null
 #  description         :text
-#  price               :string
+#  price               :string           not null
 #  product_category_id :bigint           not null
-#  stock               :integer
-#  discount_percentage :integer
+#  stock               :integer          not null
+#  discount_percentage :integer          default(0), not null
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  vendor_id           :bigint           not null
 #
 class ProductSerializer < ActiveModel::Serializer
-  attributes :id, :name, :brand, :image_urls, :description, :price, :stock, :discount_percentage, :product_category_id, :vendor_id, :created_at, :updated_at
+  attributes :id, :title, :brand, :image, :description, :price, :stock, :discount_percentage
+
   belongs_to :product_category
-  has_many :comments
+  has_many :comments, each_serializer: CommentSerializer
   belongs_to :vendor
 end

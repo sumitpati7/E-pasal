@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_15_060343) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_20_080920) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -81,8 +81,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_15_060343) do
   create_table "order_products", force: :cascade do |t|
     t.bigint "order_id", null: false
     t.bigint "product_id", null: false
-    t.integer "quantity"
-    t.string "status"
+    t.integer "quantity", null: false
+    t.string "status", default: "pending", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_order_products_on_order_id"
@@ -97,23 +97,24 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_15_060343) do
   end
 
   create_table "product_categories", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "icon"
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.string "brand"
+    t.string "title", null: false
+    t.string "brand", default: "No Brand", null: false
     t.text "description"
-    t.string "price"
+    t.string "price", null: false
     t.bigint "product_category_id", null: false
-    t.integer "stock"
-    t.integer "discount_percentage"
+    t.integer "stock", null: false
+    t.integer "discount_percentage", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "vendor_id", null: false
+    t.string "image_url"
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
     t.index ["vendor_id"], name: "index_products_on_vendor_id"
   end

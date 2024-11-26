@@ -1,0 +1,12 @@
+<tr class="bg-gray-200 hover:bg-gray-400" id="order_product_<%= orderProduct.id %>>">
+    <td class="px-4 py-3 flex justify-center"> 
+        <% if orderProduct.product.product_image.attached? %>
+            <%= image_tag url_for(orderProduct.product.product_image[0]), class: "w-10 h-10 rounded mr-4" %>
+        <% else %>
+            <img src="<%= orderProduct.product.image_url %>" alt="" class="w-10 h-10 rounded mr-4">
+        <% end %>
+    </td>
+    <td class="px-4 py-3 text-center"> <a href="/products/<%= orderProduct.product.id %>"><%= orderProduct.product.title %></a> </td>
+    <td class="text-center px-4 py-3"> <%= orderProduct.quantity %> </td>
+    <td class="px-4 py-3 text-center"> <%= orderProduct.created_at.to_formatted_s(:long) %> </td>
+</tr>

@@ -24,18 +24,26 @@ Rails.application.routes.draw do
   # Resources
   resources :product_categories, only: [ :new, :create, :edit, :update, :index, :destroy ]
   resources :vendors, only: %i[new create index edit show]
-  resources :products, only: %i[new create index edit update destroy]
+  resources :products, only: %i[new create index edit update destroy show]
+  resources :orders, only: %i[ index ]
 
  namespace :api do
     namespace :v1 do
-      resources :products, only: [ :index, :show ]
-      resources :product_categories, only: [ :index ]
-      resources :vendors, only: [ :index, :show]
-      resources :orders, only: [ :index, :show]
+      resources :products, only: [ :index, :show ] do
+        resources :comments, only: [ :destroy, :create ]
+        collection do
+          get "search", to: "products#search"
+        end
+      end
+      resources :product_categories, only: [ :index, :show ]
+      resources :vendors, only: [ :index, :show ]
       devise_for :users, controllers: {
         registrations: "api/v1/sign_up",
         sessions: "api/v1/sign_in"
-  }
+      }
+      resources :users do
+          resources :orders, only: [ :index, :create, :show ]
+      end
     end
  end
 end
