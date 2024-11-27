@@ -18,5 +18,18 @@ class OrderProduct < ApplicationRecord
   after_update_commit -> { broadcast_replace_to "orders", partial: "shared/orderProduct", locals: { orderProduct: self } }
   after_destroy_commit -> { broadcast_remove_to "orders" }
 
-  enum status: { pending: "pending", on_the_way: "on the way", shipped: "shipped", cancled: "cancled" }
+  enum status: { pending: "pending", on_the_way: "on the way", shipped: "shipped", cancelled: "cancelled" }
+
+  after_update :delete_if_shipped_or_cancelled
+  after_destroy :destroy_parent_order_if_empty
+
+  private
+
+  def delete_if_shipped_or_cancelled
+    destroy if saved_change_to_status? && shipped? || cancelled?
+  end
+
+  def destroy_parent_order_if_empty
+    order.destroy if order.order_products.empty?
+  end
 end
