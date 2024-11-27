@@ -23,7 +23,7 @@ class Api::V1::OrdersController < Api::V1::ApplicationController
       quantity = order_product["quantity"].to_i
       product = Product.find_by_id(pid)
       render json: { error: "No product available " }, status: 404 and return if product.nil?
-      if quantity >= product.stock
+      if quantity > product.stock
         render json: { error: "Too many quantity ordered" }, status: 422 and return
       end
     end
