@@ -25,6 +25,13 @@ class Vendor < ApplicationRecord
 
   has_many :order_products, through: :products
 
+  validates :email, :password, :owner_name, :shop_name, :contact_number, :address, presence: true
+
+  validates :contact_number, format: {
+    with: /\A(98\d{8}|97\d{8})\z/,
+    message: "Invalid phone number"
+  }
+
   def image_url
     # vendor_image.map { |image| Rails.application.routes.url_helpers.rails_blob_url(image, only_path: true) }
     if vendor_image.attached?

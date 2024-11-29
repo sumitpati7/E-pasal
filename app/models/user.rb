@@ -28,10 +28,15 @@ class User < ApplicationRecord
   has_many :products, through: :comments
 
 
-  #validations
+  # validations
   validates :email, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :address, presence: true
   validates :contact_phone, presence: true
+
+  validates :contact_phone, format: {
+    with: /\A(98\d{8}|97\d{8})\z/,
+    message: "Invalid phone number"
+  }
 end
