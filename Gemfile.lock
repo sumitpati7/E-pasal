@@ -446,6 +446,7 @@ DEPENDENCIES
   rails (~> 7.2.1, >= 7.2.1.2)
   rails-erd
   rspec-rails (~> 7.0.0)
+  rubocop-rails
   rubocop-rails-omakase
   sassc
   selenium-webdriver
