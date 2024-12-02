@@ -8,8 +8,8 @@ class Api::V1::CommentsController < Api::V1::ApplicationController
           }
         else
           render json: {
-            message: comment.errors.full_message
-          }
+            message: comment.errors.full_messages
+          }, status: 400
         end
       else
         render json: {
