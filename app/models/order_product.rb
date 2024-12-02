@@ -23,6 +23,8 @@ class OrderProduct < ApplicationRecord
   after_update :delete_if_shipped_or_cancelled
   after_destroy :destroy_parent_order_if_empty
 
+  validates :order_id, :product_id, presence: true
+  validates :quantity, numericality: { greater_than: 0 }, presence: true
   private
 
   def delete_if_shipped_or_cancelled
