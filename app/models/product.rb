@@ -43,4 +43,6 @@ class Product < ApplicationRecord
       image_url
     end
   end
+
+  
 end
