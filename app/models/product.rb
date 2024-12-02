@@ -3,7 +3,7 @@
 # Table name: products
 #
 #  id                  :bigint           not null, primary key
-#  name                :string           not null
+#  title               :string           not null
 #  brand               :string           default("No Brand"), not null
 #  description         :text
 #  price               :string           not null
@@ -13,6 +13,7 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  vendor_id           :bigint           not null
+#  image_url           :string
 #
 class Product < ApplicationRecord
   belongs_to :product_category
