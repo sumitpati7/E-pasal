@@ -18,14 +18,14 @@ RSpec.describe OrderProduct, type: :model do
     # let(:product) { create(:product) }
 
 
-    # user=User.create!(email: "habi1111@gmail.com", password: "123456789", first_name: "habi", last_name: "Pyatha", address: "Thimi", contact_phone: "9876543212")
-    # vendor=Vendor.create!(email: "habi2222@gmail.com", password: "123456789", owner_name: "habi", shop_name: "Pro", address: "thimi", contact_number: "9876543211")
-    # category=ProductCategory.create!(name: "Powerbank")
-    # product=Product.create!(title: "PowerBank", brand: "X-age", description: "best for the price", price: "2500", product_category_id: category.id, stock: 100, discount_percentage: 23, vendor_id: vendor.id)
-    # order= Order.create!(user_id: user.id)
-    subject {
-    # OrderProduct.new(order_id: order.id, product_id: product.id, quantity: 11)
-    OrderProduct.new(order_id: 11, product_id: 11, quantity: 1)
+    let(:user) { User.create!(email: "habi11111@gmail.com", password: "123456789", first_name: "habi", last_name: "Pyatha", address: "Thimi", contact_phone: "9876543212") }
+    let(:vendor) { Vendor.create!(email: "habi22222@gmail.com", password: "123456789", owner_name: "habi", shop_name: "Pro", address: "thimi", contact_number: "9876543211") }
+    let(:category) { ProductCategory.create!(name: "Powerbank12") }
+    let(:product) { Product.create!(title: "PowerBank12", brand: "X-age", description: "best for the price", price: "2500", product_category_id: category.id, stock: 100, discount_percentage: 23, vendor_id: vendor.id) }
+    let(:order) { Order.create!(user_id: user.id) }
+    let(:subject) {
+    OrderProduct.new(order_id: order.id, product_id: product.id, quantity: 1)
+    # OrderProduct.new(order_id: 11, product_id: 11, quantity: 1)
   }
   it "is valid with valid attributes" do
     # subject.valid?
