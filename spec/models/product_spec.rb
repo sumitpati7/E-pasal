@@ -20,7 +20,7 @@ require 'rails_helper'
 RSpec.describe Product, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
 
-  subject { Product.new(brand: "Sunsilk", description: "Hello World", price: 350, stock: 12, discount_percentage: 12, product_category_id: 26, vendor_id: 26) }
+  subject { Product.new(title: "Shampoo", brand: "Sunsilk", description: "Hello World", price: 350, stock: 12, discount_percentage: 12, product_category_id: 26, vendor_id: 26) }
 
 
   it "is valid with valid attributes" do
