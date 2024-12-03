@@ -8,17 +8,16 @@ RSpec.describe "Vendors", type: :request do
 
     it "returns a list of products added by that particular vendor" do
       get "/api/v1/vendors/#{vendor.id}"
-      expect(response).to have_http_status(:ok) # expecting valid status code
-      # parsed_response = JSON.parse(response.body)
-      # expect(parsed_response["message"]).to eq("Vendor found")
+      # expect(response).to have_http_status(:ok) # expecting valid status code
+      parsed_response = JSON.parse(response.body)
+      expect(parsed_response["message"]).to eq("Vendor found")
     end
 
     it "returns an error when vendor is not found" do
       get "/api/v1/vendors/111"
-      expect(response).to have_http_status(:not_found)
-      # Somehow the code below doesn't work
-      # parsed_response = JSON.parse(response.body)
-      # expect(parsed_response["messsage"]).to eq("Vendor not found")
+      # expect(response).to have_http_status(:not_found)
+      parsed_response = JSON.parse(response.body)
+      expect(parsed_response["message"]).to eq("Vendor not found")
     end
   end
 end
