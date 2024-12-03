@@ -19,8 +19,8 @@ class Api::V1::CommentsController < Api::V1::ApplicationController
     end
 
     def destroy
-      comment=Comment.find_by(id: params[:id])
-      if comment
+      comment=Comment.where(id: params[:id], product_id: params[:product_id]).first!
+      if comment.present?
         comment.destroy
         render json: { message: "Delete success" }, status: :ok
 
