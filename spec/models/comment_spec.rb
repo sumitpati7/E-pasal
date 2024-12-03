@@ -13,7 +13,7 @@ require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   let(:category) {
-    ProductCategory.create!(name: "Powerbank12345")
+    ProductCategory.create!(name: "Hoodies")
   }
 
   let(:vendor) {
