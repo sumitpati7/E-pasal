@@ -1,11 +1,7 @@
 <div class="lg:flex mx-auto w-[90%] mt-4 lg:gap-6 ">
   <!-- Image Section -->
   <div class="mx-auto lg:w-[60%] overflow-hidden">
-    <% if @product.product_image.attached? %>
-      <%= image_tag url_for(@product.product_image), class: "w-full rounded mt-3 hover:scale-105" %>
-    <% else %>
-      <img src="<%= @product.image_url %>" alt="" class="w-full rounded mt-3">
-    <% end %>
+    <%=ProductImage(@product, "w-full rounded mt-3 hover:scale-105")%>
   </div>
 
   <!-- Details Section -->
