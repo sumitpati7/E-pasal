@@ -2,9 +2,9 @@ class Api::V1::OrdersController < Api::V1::ApplicationController
   def index
     orders = Order.where("user_id": params[:user_id])
     if orders.empty?
-      render json: { message: "No orders found", orders: nil }
+      render json: { message: "No orders found", orders: nil }, status: :not_found
     else
-      render json: { message: "Orders found", orders: orders.map { |order| OrderSerializer.new(order).serializable_hash } }
+      render json: { message: "Orders found", orders: orders.map { |order| OrderSerializer.new(order).serializable_hash } }, status: :ok
     end
   end
 
@@ -13,7 +13,7 @@ class Api::V1::OrdersController < Api::V1::ApplicationController
     if order
       render json: { message: "Order found", data: order }, status: :ok
     else
-      render json: { message: "Order Not Found" }, status: :not_found
+      render json: { message: "Order Not Found", data: nil }, status: :not_found
     end
   end
 
