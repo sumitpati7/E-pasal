@@ -13,7 +13,7 @@ require 'rails_helper'
 RSpec.describe ProductCategory, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
   subject {
-    ProductCategory.new(name: "Watches", icon: "fa-watch")
+    ProductCategory.new(name: "Bags", icon: "fa-watch")
   }
 
   it "is valid with valid params" do
@@ -28,7 +28,7 @@ RSpec.describe ProductCategory, type: :model do
   end
 
   it "is invalid without unique name" do
-    subject.name="Beauty"
+    ProductCategory.create!(name: "Bags", icon: "fa-watch")
     subject.valid?
     expect(subject.errors[:name]).to include("has already been taken")
   end
