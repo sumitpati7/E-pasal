@@ -7,7 +7,7 @@ module Api
           # render json: vendor, each_serializer: VendorSerializer
           render json: { message: "Vendor found", data: VendorSerializer.new(vendor).as_json }
         rescue
-          render json: { message: "Vendor not found" }
+          render json: { message: "Vendor not found" }, status: 404
         end
       end
     end
