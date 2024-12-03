@@ -28,6 +28,7 @@ RSpec.describe ProductCategory, type: :model do
   end
 
   it "is invalid without unique name" do
+    subject.name="Beauty"
     subject.valid?
     expect(subject.errors[:name]).to include("has already been taken")
   end

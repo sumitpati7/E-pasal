@@ -13,12 +13,12 @@ require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   let(:category) {
-    ProductCategory.create!(name: "Powerbank")
+    ProductCategory.create!(name: "Powerbank12345")
   }
 
   let(:vendor) {
     Vendor.create!(
-      email: "habi2222@gmail.com",
+      email: "habi2221232@gmail.com",
       password: "123456789",
       owner_name: "habi",
       shop_name: "Pro",
