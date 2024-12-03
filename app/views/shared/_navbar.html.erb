@@ -7,11 +7,7 @@
             <% if vendor_signed_in? %>
                     <%= link_to vendor_path(current_vendor.id), class: "flex gap-4 items-center" do %>
                         <div class="flex justify-center">
-                            <% if current_vendor.vendor_image.attached? %>
-                                <%=image_tag current_vendor.vendor_image, class: "h-[30px] w-[30px] rounded-full"%>
-                            <%else%>
-                                <div class="rounded-full h-[30px] w-[30px] bg-blue-200 capitalize text-[20px] flex justify-center items-center"><%=current_vendor.shop_name[0]%></div>
-                            <% end %>
+                            <%= vendor_profile_image_or_user_name(current_vendor, "h-[30px] w-[30px]") %>
                         </div>
                         <span class="text-[#2e2e2e] font-medium"><%=current_vendor.shop_name%></span>
                     <% end %>
