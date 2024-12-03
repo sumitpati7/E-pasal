@@ -1,23 +1,19 @@
-<%= turbo_frame_tag product do %>
-    <div class="border-b w-full hover:bg-gray-200 flex justify-around">
-<%=link_to product_path(product.id),data:{turbo_frame: "_top"},class:"flex" do%>
-        <div class="px-2 py-3  items-center  min-w-[522px] max-w-[522px]">
-            <% if product.product_image.attached? %>
-                <%= image_tag url_for(product.product_image), class: "w-10 h-10 rounded mr-4", alt: product.title %>
-            <% else %>
-                <img src="<%= product.image_url %>" alt="<%= product.title %>" class="w-10 h-10 rounded mr-4">
-            <% end %>
-            <div class="text-[#2e2e2e] font-medium "> <%= product.title %> </div>
-    <%end%>
-        </div>
-        <div class="px-2 py-3 text-[#2e2e2e] text-center min-w-[100px] max-w-[100px]"> Rs. <%= product.price %> </div>
-        <div class="px-2 py-3 text-[#2e2e2e] text-center min-w-[55px] max-w-[45px]"> <%= product.stock %> </div>
-        <div class="px-2 py-3 text-[#2e2e2e] min-w-[200px] max-w-[200px]"> <%= product.created_at.to_formatted_s(:long) %> </div>
-        <div class="px-2 py-3 ">
-            <%= button_to "Edit", edit_product_path(product.id), data:{ turbo_frame: product }, method: :get, class:"w-full px-4 py-1 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
-        </div>
-        <div class="px-2 py-3">
-            <%= button_to "Delete", product_path(product.id), data:{ turbo_frame: product }, method: :delete, class:"w-full px-4 py-1 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%>
-        </div>
-    </div>
-<% end %>
+<tr class="border-b w-full hover:bg-gray-200" id="product_<%= product.id %>">
+    <td class="flex items-center justify-center">
+        <% if product.product_image.attached? %>
+            <%= image_tag url_for(product.product_image), class: "w-10 h-10 rounded mr-4" %>
+        <% else %>
+            <img src="<%= product.image_url %>" alt="" class="w-10 h-10 rounded mr-4">
+        <% end %>
+    </td>
+    <td>
+        <a href="/products/<%= product.id %>"><%= product.title %></a>
+    </td>
+    <td>
+        <%= product.price %>
+    </td>
+    <td> <%= product.stock %> </td>
+    <td> <%= time_ago_in_words(product.created_at) %> </td>
+    <td> <%= button_to "Edit", edit_product_path(product.id), data:{ turbo_frame: product }, method: :get, class:"w-full px-4 py-1 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%></td>
+    <td><%= button_to "Delete", product_path(product.id), data:{ turbo_frame: product }, method: :delete, class:"w-full px-4 py-1 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%></td>
+</tr>

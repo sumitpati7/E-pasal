@@ -1,4 +1,4 @@
-<tr class="bg-gray-200 hover:bg-gray-400" id="order_product_<%= orderProduct.id %>>">
+<tr class="bg-gray-200 hover:bg-gray-400" id="order_product_<%= orderProduct.id %>">
     <td class="px-4 py-3 flex justify-center"> 
         <% if orderProduct.product.product_image.attached? %>
             <%= image_tag url_for(orderProduct.product.product_image), class: "w-10 h-10 rounded mr-4" %>
