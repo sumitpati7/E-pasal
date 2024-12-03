@@ -19,8 +19,12 @@ require 'rails_helper'
 
 RSpec.describe Product, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
-
-  subject { Product.new(title: "Shampoo", brand: "Sunsilk", description: "Hello World", price: 350, stock: 12, discount_percentage: 12, product_category_id: 26, vendor_id: 26) }
+  let(:user) { User.create!(email: "habi123@gmail.com", password: "123456789", first_name: "habi", last_name: "Pyatha", address: "Thimi", contact_phone: "9876543212") }
+  let(:vendor) { Vendor.create!(email: "habi123@gmail.com", password: "123456789", owner_name: "habi", shop_name: "Pro", address: "thimi", contact_number: "9876543211") }
+  let(:category) { ProductCategory.create!(name: "Powerbank123") }
+  let(:subject) { Product.create!(title: "PowerBank123", brand: "X-age", description: "best for the price", price: "2500", product_category_id: category.id, stock: 100, discount_percentage: 23, vendor_id: vendor.id) }
+  # let(:order) { Order.create!(user_id: user.id) }
+  # subject { Product.new(title: "Shampoo", brand: "Sunsilk", description: "Hello World", price: 350, stock: 12, discount_percentage: 12, product_category_id: 26, vendor_id: 26) }
 
 
   it "is valid with valid attributes" do

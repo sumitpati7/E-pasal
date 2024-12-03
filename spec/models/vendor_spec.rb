@@ -19,7 +19,7 @@ require 'rails_helper'
 
 RSpec.describe Vendor, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
-  subject { Vendor.new(email: "habi@gmail.com", password: "1234habipyataha", owner_name: "Habi", shop_name: "PyathaShop", address: "Madhyapur Thimi", contact_number: "98413001454") }
+  let(:subject) { Vendor.create!(email: "habi86787df6@gmail.com", password: "1234habipyataha", owner_name: "Habi", shop_name: "PyathaShop", address: "Madhyapur Thimi", contact_number: "9841300145") }
 
   it "is valid with valid attributes" do
     expect(subject).to be_valid
@@ -43,10 +43,10 @@ RSpec.describe Vendor, type: :model do
   end
   it "is invalid with a duplicate email address" do
     Vendor.create!(
-      email: "habi@gmail.com", password: "12345678", owner_name: "Habi", shop_name: "ProShop", address: "Thimi", contact_number: "9876545676"
+      email: "habi11@gmail.com", password: "12345678", owner_name: "Habi", shop_name: "ProShop", address: "Thimi", contact_number: "9876545676"
     )
     vendor=Vendor.new(
-      email: "habi@gmail.com", password: "12345678", owner_name: "Habi", shop_name: "ProShop", address: "Thimi", contact_number: "987654567678787"
+      email: "habi11@gmail.com", password: "12345678", owner_name: "Habi", shop_name: "ProShop", address: "Thimi", contact_number: "987654567678787"
     )
     vendor.valid?
     expect(vendor.errors[:email]).to include("has already been taken")
