@@ -1,10 +1,6 @@
 <tr class="border-b w-full hover:bg-gray-200 h-10 text-[16px]" id="product_<%= product.id %>">
     <td class="flex items-center justify-center">
-        <% if product.product_image.attached? %>
-            <%= image_tag url_for(product.product_image), class: "w-10 h-10 rounded mr-4" %>
-        <% else %>
-            <img src="<%= product.image_url %>" alt="" class="w-10 h-10 rounded mr-4">
-        <% end %>
+        <%=ProductImage(product, "w-10 h-10 rounded mr-4")%>
     </td>
     <td class="">
         <a href="/products/<%= product.id %>"><%= product.title %></a>
