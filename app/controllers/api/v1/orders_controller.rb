@@ -1,4 +1,5 @@
 class Api::V1::OrdersController < Api::V1::ApplicationController
+  before_action :authenticate_user!
   def index
     orders = Order.where("user_id": params[:user_id])
     if orders.empty?

@@ -1,4 +1,5 @@
 class Api::V1::CommentsController < Api::V1::ApplicationController
+  before_action :authenticate_user!
     def create
       if Product.exists?(params[:product_id])
         comment = Comment.new(comment_params.merge(product_id: params[:product_id]))
