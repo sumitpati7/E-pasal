@@ -2,7 +2,6 @@ class Api::V1::CommentsController < Api::V1::ApplicationController
   before_action :authenticate_user!
     def create
       if Product.exists?(params[:product_id])
-        puts current_user.email
         comment = Comment.new(comment_params.merge(product_id: params[:product_id], user_id: current_user.id))
         if comment.save
           render json: {

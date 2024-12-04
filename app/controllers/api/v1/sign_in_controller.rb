@@ -22,7 +22,7 @@ module Api
 
           def generate_jwt(user)
             payload = { user_id: user.id, exp: 24.minutes.from_now.to_i }
-            JWT.encode(payload, Rails.application.secret_key_base)
+            JWT.encode(payload, Rails.application.credentials.secret_key_base)
           end
       end
     end

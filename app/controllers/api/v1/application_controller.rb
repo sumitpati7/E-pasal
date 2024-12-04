@@ -6,7 +6,7 @@ module Api
 
         def authenticate_user!
           token = request.headers["Authorization"]&.split(" ")&.last
-          payload = JWT.decode(token, Rails.application.secret_key_base)[0]
+          payload = JWT.decode(token, Rails.application.credentials.secret_key_base)[0]
           @current_user = User.find(payload["user_id"])
         rescue JWT::DecodeError, ActiveRecord::RecordNotFound
           render json: { error: "Unauthorized access" }, status: :unauthorized
