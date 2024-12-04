@@ -5,7 +5,7 @@ module Api
             user = User.find_by(email: params[:email])
             if user&.valid_password?(params[:password])
                 token = generate_jwt(user)
-                render json: { token: token, message: "Signed in Successfully", user: UserSerializer.new(user).as_json }, status: :ok
+                render json: { token: token, message: "User Login Successful", user: UserSerializer.new(user).as_json }, status: :ok
             else
                 render json: { error: "Invalid email or password" }, status: :unauthorized
             end
