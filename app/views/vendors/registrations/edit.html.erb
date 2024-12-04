@@ -7,11 +7,7 @@
   
     <div class="space-y-4">
       <div class="flex justify-center">
-        <% if current_vendor.vendor_image.attached? %>
-          <%=image_tag current_vendor.vendor_image, class: "h-[100px] w-[100px] rounded-full"%>
-            <%else%>
-          <div class="rounded-full h-[100px] w-[100px] bg-blue-200 capitalize text-[80px] flex justify-center items-center"><%=current_vendor.shop_name[0]%></div>
-            <% end %>
+        <%= vendor_profile_image_or_user_name(current_vendor, "h-[100px] w-[100px] text-[80px]") %>
       </div>
       <%= f.input :vendor_image,
                   label_html: { class: "block text-base font-medium text-[#2e2e2e] mb-1" },
