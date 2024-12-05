@@ -42,9 +42,7 @@ Rails.application.routes.draw do
         registrations: "api/v1/sign_up",
         sessions: "api/v1/sign_in"
       }
-      resources :users do
-          resources :orders, only: [ :index, :create, :show ]
-      end
+      resources :orders, only: [ :index, :create, :show ]
     end
  end
 end

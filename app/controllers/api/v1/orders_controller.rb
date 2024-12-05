@@ -1,6 +1,7 @@
 class Api::V1::OrdersController < Api::V1::ApplicationController
+  before_action :authenticate_user!
   def index
-    orders = Order.where("user_id": params[:user_id])
+    orders = Order.where("user_id": current_user.id)
     if orders.empty?
       render json: { message: "No orders found", orders: nil }, status: :not_found
     else
@@ -28,7 +29,7 @@ class Api::V1::OrdersController < Api::V1::ApplicationController
       end
     end
 
-    order = Order.new(user_id: params[:user_id])
+    order = Order.new(user_id: current_user.id)
     if order.save
       order_products = order.order_products.build(products_params)
       if order_products.all? { |order_product| saveOrderProducts(order_product) }
