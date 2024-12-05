@@ -4,6 +4,8 @@
     </td>
     <td class="px-4 py-3 text-center"> <a href="/products/<%= orderProduct.product.id %>"><%= orderProduct.product.title %></a> </td>
     <td class="text-center px-4 py-3"> <%= orderProduct.quantity %> </td>
+    <td class="text-center px-4 py-3"><%=orderProduct.order.user.first_name%>(<%=orderProduct.order.user.id%>)</td>
+    <%# <td></td> %>
     <td class="px-4 py-3 text-center"> <%= orderProduct.created_at.to_formatted_s(:long) %> </td>
     <td class="text-center px-4 py-3"> 
         <%= simple_form_for orderProduct, html: { class: "flex items-center gap-4" } do |f| %>
