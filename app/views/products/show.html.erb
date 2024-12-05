@@ -1,22 +1,24 @@
-<div class="lg:flex mx-auto w-[90%]  mt-4 lg:gap-6  ">
-  <!-- Image Section -->
-  <div class="mx-auto lg:w-[50%] lg:h-[50vh] lg:overflow-hidden">
-    <%=ProductImage(@product, "w-full rounded mt-3 h-full hover:scale-105")%>
+  <div class="main-container w-[70%] mx-auto py-16">
+  <div class="p-4 flex bg-white shadow-md">
+    <div class="w-[50%] h-[550px] p-1">
+      <%=ProductImage(@product, "w-full h-full rounded hover:scale-105 object-contain")%>
+    </div>
+    <div class="w-[50%] p-4">
+      <h2 class="text-[#c96262] text-5xl font-semibold"><%= @product.title %></h2>
+      <div class="text-[#36454f] text-xl font-semibold"><%= @product.brand %> || <%= @product.product_category.name %></div>
+      <p class="text-[#2e2e2e]"><%= @product.description %></p>
+      <table class="w-full">
+        <tbody>
+          <tr class="border-y ">
+            <th class="w-[45%]">Stock</th>
+            <td> <%= show_quantity(@product) %> </td>
+          </tr>
+          <tr class="border-b">
+            <th class="w-[45%]">Price</th>
+            <td> <%= show_price(@product) %> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-
-    <!-- Details Section -->
-    <div class="flex items-center shadow-md border rounded w-[50%]">
-    <div class="w-full  p-4 lg:p-6">
-        <div class="text-[#c96262] text-4xl font-bold mb-4 text-justify"><%= @product.title %></div>
-        <div class="text-gray-600 text-lg lg:text-xl ml-2 mb-2">Brand: <%= @product.brand %></div>
-        <div class="text-red-600 text-lg mb-2">
-            <span class="line-through">Rs. <%= @product.price %></span>
-            <span class="ml-2 font-bold"><%= @product.discount_percentage %>% Off</span>
-        </div>
-        <div class="text-green-500  text-xl font-bold mb-4">
-            Rs. <%= calc_discounted_amount(@product.price, @product.discount_percentage) %>
-        </div>
-        <div class="text-blue-900 font-bold text-lg">Stock: <%= @product.stock %></div>
-    </div>
-    </div>
 </div>
