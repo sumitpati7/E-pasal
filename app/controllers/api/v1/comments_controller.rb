@@ -21,13 +21,16 @@ class Api::V1::CommentsController < Api::V1::ApplicationController
 
     def destroy
       comment=Comment.where(id: params[:id], product_id: params[:product_id]).first!
-      if comment.present?
-        comment.destroy
-        render json: { message: "Delete success" }, status: :ok
-
+      if comment.user_id == current_user.id
+        if comment.present?
+          comment.destroy
+          render json: { message: "Delete success" }, status: :ok
+        else
+            # render json: { message: comment.errors.full_message }
+            render json: { message: "Comment not found" }, status: :not_found
+        end
       else
-          # render json: { message: comment.errors.full_message }
-          render json: { message: "Comment not found" }, status: :not_found
+        render json: { message: "You can't delete this comment" }, status: 401
       end
     end
     private
