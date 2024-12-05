@@ -1,20 +1,32 @@
-<div class="lg:flex mx-auto w-[90%] mt-4 lg:gap-6 ">
-  <!-- Image Section -->
-  <div class="mx-auto lg:w-[60%] overflow-hidden">
-    <%=ProductImage(@product, "w-full rounded mt-3 hover:scale-105")%>
-  </div>
-
-    <!-- Details Section -->
-    <div class="w-full border rounded shadow-sm p-4 lg:p-6">
-        <div class="text-[#c96262] text-xl font-semibold mb-4 text-justify"><%= @product.title %></div>
-        <div class="text-gray-600 text-lg lg:text-xl mb-2">Brand: <%= @product.brand %></div>
-        <div class="text-red-600 text-lg mb-2">
-            <span class="line-through">Rs. <%= @product.price %></span>
-            <span class="ml-2"><%= @product.discount_percentage %>% Off</span>
-        </div>
-        <div class="text-green-500 text-xl font-bold mb-4">
-            Rs. <%= calc_discounted_amount(@product.price, @product.discount_percentage) %>
-        </div>
-        <div class="text-blue-900 text-lg">Stock: <%= @product.stock %></div>
+  <div class="main-container w-[70%] mx-auto py-16">
+  <div class="p-4 flex bg-white shadow-md">
+    <div class="w-[50%] h-[550px] p-1">
+      <%=ProductImage(@product, "w-full rounded hover:scale-105")%>
     </div>
+    <div class="w-[50%] p-4">
+      <h2 class="text-[#c96262] text-5xl font-semibold"><%= @product.title %></h2>
+      <div class="text-[#36454f] text-xl font-semibold"><%= @product.brand %> || <%= @product.product_category.name %></div>
+      <p class="text-[#2e2e2e]"><%= @product.description %></p>
+      <table class="w-full">
+        <tbody>
+          <tr class="border-b">
+            <th class="w-[45%]">Stock</th>
+            <td> <%= show_quantity(@product) %> </td>
+          </tr>
+          <tr class="border-b">
+            <th class="w-[45%]">Price</th>
+            <td class="text-center"> <%= @product.price %> </td>
+          </tr>
+          <tr class="border-b">
+            <th class="w-[45%]">Discount Percentage</th>
+            <td class="text-center"> <%= @product.discount_percentage %> </td>
+          </tr>
+          <tr class="border-b">
+            <th class="w-[45%]">Discounted Price</th>
+            <td class="text-center"> <%= calc_discounted_amount(@product) %> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
