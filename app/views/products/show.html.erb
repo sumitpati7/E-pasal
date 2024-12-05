@@ -1,7 +1,7 @@
   <div class="main-container w-[70%] mx-auto py-16">
   <div class="p-4 flex bg-white shadow-md">
     <div class="w-[50%] h-[550px] p-1">
-      <%=ProductImage(@product, "w-full rounded hover:scale-105")%>
+      <%=ProductImage(@product, "w-full h-full rounded hover:scale-105 object-contain")%>
     </div>
     <div class="w-[50%] p-4">
       <h2 class="text-[#c96262] text-5xl font-semibold"><%= @product.title %></h2>
@@ -9,21 +9,13 @@
       <p class="text-[#2e2e2e]"><%= @product.description %></p>
       <table class="w-full">
         <tbody>
-          <tr class="border-b">
+          <tr class="border-y ">
             <th class="w-[45%]">Stock</th>
             <td> <%= show_quantity(@product) %> </td>
           </tr>
           <tr class="border-b">
             <th class="w-[45%]">Price</th>
-            <td class="text-center"> <%= @product.price %> </td>
-          </tr>
-          <tr class="border-b">
-            <th class="w-[45%]">Discount Percentage</th>
-            <td class="text-center"> <%= @product.discount_percentage %> </td>
-          </tr>
-          <tr class="border-b">
-            <th class="w-[45%]">Discounted Price</th>
-            <td class="text-center"> <%= calc_discounted_amount(@product) %> </td>
+            <td> <%= show_price(@product) %> </td>
           </tr>
         </tbody>
       </table>
