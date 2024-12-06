@@ -1,0 +1,22 @@
+<div class="w-[70%] mx-auto">
+    <h1 class="text-5xl text-[#f25c54] font-semibold my-4">Products</h1>
+    <table class="w-full border-collapse text-sm text-left text-[#2e2e2e]">
+        <thead>
+            <tr class="border-b w-full bg-gray-200 h-[45px]">
+                <th class="text-center h-full text-[16px]">Image</th>
+                <th class="text-center h-full text-[16px]">Name</th>
+                <th class="text-center h-full text-[16px]">Price</th>
+                <th class="text-center h-full text-[16px]">Stock</th>
+                <th class="text-center h-full text-[16px]">Created</th>
+                <th class="text-center h-full text-[16px]">Edit</th>
+                <th class="text-center h-full text-[16px]">Delete</th>
+            </tr>
+        </thead>
+        <tbody id="products">
+            <% @result.each_with_index do |product, index| %>
+                <%= render "shared/product", product: product, index: index %>
+            <% end %>
+        </tbody>
+    </table>
+    <div class="flex justify-center p-4"><%= paginate @result %></div>
+</div>
