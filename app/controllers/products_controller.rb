@@ -51,6 +51,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  def search
+    keyword = params[:search]["query"]
+    @result = Product.where("title ILIKE :keyword OR description ILIKE :keyword OR brand ILIKE :keyword AND vendor_id=:id", keyword: "%#{keyword}%", id: current_vendor.id).order(:title).page(params[:page]).per(8)
+  end
+
   private
   def product_params
     params.require(:product).permit(:title, :brand, :description, :price, :product_category_id, :stock, :vendor_id, :discount_percentage, :product_image)
