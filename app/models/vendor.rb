@@ -40,6 +40,4 @@ class Vendor < ApplicationRecord
       ""
     end
   end
-
-  
 end
