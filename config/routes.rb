@@ -24,7 +24,11 @@ Rails.application.routes.draw do
   # Resources
   resources :product_categories, only: [ :new, :create, :edit, :update, :index, :destroy ]
   resources :vendors, only: %i[new create index edit show]
-  resources :products, only: %i[new create index edit update destroy show]
+  resources :products, only: %i[new create index edit update destroy show] do
+    collection do
+      get :search
+    end
+  end
   resources :orders, only: %i[ index ]
   resources :order_products, only: %i[ edit update ]
 
