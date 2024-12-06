@@ -1,13 +1,12 @@
+<%=turbo_stream_from "category"%>
 <div class="w-[70%] mx-auto">
     <div>
         <h1 class="text-5xl text-[#f25c54] font-semibold my-4">Product categories</h1>
     </div>
     <%=render "shared/add_category"%>
-    <%@categories.each do |category| %>
-    <div class="flex justify-around border-b ">
-        <div class="flex items-center capitalize"><%=category.name%></div>
-        <%=link_to "Edit",edit_product_category_path(category.id),class:"bg-blue-400 rounded text-white m-2 p-2 hover:bg-blue-600 ml-auto "%>
-        <%=link_to "Delete",product_category_path(category.id),data:{turbo_method: :delete,turbo_confirm: "Are you sure?"},class:"bg-red-400 rounded text-white m-2 p-2 hover:bg-red-600  "%>
-    </div>
+    <%=turbo_frame_tag "category" do%>
+        <%@categories.each do |category| %>
+            <%=render "shared/category_name",category:category%>
+        <%end%>
     <%end%>
 </div>
