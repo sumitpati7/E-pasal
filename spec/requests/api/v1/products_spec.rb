@@ -6,7 +6,7 @@ RSpec.describe "Api::V1::ProductsController", type: :request do
       Vendor.create!(email: "dikesh@gmail.com", password: "123456789", owner_name: "Vendor Owner", shop_name: "Vendor Shop", address: "Bhaktapur", contact_number: "9876543210")
     end
     # Create a Product Category
-    let(:product_category){ProductCategory.create!(name: "Electronics10", icon: "electronics_icon.png")}
+    let(:product_category) { ProductCategory.create!(name: "Electronics10", icon: "electronics_icon.png") }
 
     # Create Products
     let(:product) do
@@ -60,7 +60,7 @@ RSpec.describe "Api::V1::ProductsController", type: :request do
 
     it "returns no products when the keyword does not match" do
       get "/api/v1/products/search", params: { keyword: "Nonexistent Product" }
-      
+
       json = JSON.parse(response.body)
       expect(json["message"]).to eq("Search Results")
     end
