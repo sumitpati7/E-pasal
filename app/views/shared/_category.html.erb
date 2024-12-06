@@ -1,5 +1,7 @@
 <%=simple_form_for category , html: { class: "w-full max-w-full mx-auto p-8 bg-white rounded-lg shadow-md space-y-6"} do |f|%>
-    
+    <div class="flex justify-end">
+    <%= link_to "X", root_path,data:{turbo_frame:"_top"}, class: "px-4 py-1 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]" %>
+</div>
 
     <%= f.input :name,required: true,
     autofocus:true,

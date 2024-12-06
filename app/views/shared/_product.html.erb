@@ -10,6 +10,6 @@
     </td>
     <td class="text-center"> <%= product.stock %> </td>
     <td class="text-center"> <%= time_ago_in_words(product.created_at) %> ago</td>
-    <td class="text-center px-4"> <%= button_to "Edit", edit_product_path(product.id), data:{ turbo_frame: product }, method: :get, class:"w-full py-1 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%></td>
+    <td class="text-center px-4"> <%= button_to "Edit", edit_product_path(product.id), data:{ turbo_frame: "_top" }, method: :get, class:"w-full py-1 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%></td>
     <td class="text-center px-4"><%= button_to "Delete", product_path(product.id), data:{ turbo_frame: product }, method: :delete, class:"w-full py-1 text-white bg-[#f25c54] rounded-md hover:bg-[#d94b43] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f25c54]"%></td>
 </tr>

@@ -33,10 +33,11 @@ class ProductsController < ApplicationController
     #   @product.product_image.attach(params[:product][:product_image])
     # end
     if @product.update(product_params)
-      respond_to do |format|
-        format.html { redirect_to root_path, notice: "Product updated successfully!" }
-        format.turbo_stream
-      end
+      redirect_to root_path, notice: "Product updated successfully!"
+      # respond_to do |format|
+      #   format.html { redirect_to root_path, notice: "Product updated successfully!" }
+      #   format.turbo_stream
+      # end
     end
   end
 
